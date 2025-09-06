@@ -1,519 +1,807 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>360 Starreux — Waves. Vows. Wows.</title>
-<meta name="description" content="360 Starreux crafts luxury & boho-inspired weddings across Mumbai, Alibag, Goa & beyond. Petalscape by 360: bespoke floral design & décor.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        peach: '#EDC9AF',
-        mint:  '#D4F3B7',
-        ink:   '#0f172a',
-        coal:  '#0b0b0b',
-      },
-      fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        glow: '0 10px 30px rgba(0,0,0,.15)',
-        'soft-lg': '0 24px 60px rgba(0,0,0,.12)',
-      },
-      keyframes: {
-        'float-soft': { '0%':{transform:'translateY(0)'}, '100%':{transform:'translateY(-10px)'} },
-        'spin-slow': { '0%':{transform:'rotate(0)'}, '100%':{transform:'rotate(360deg)'} },
-        'shine': { '0%':{backgroundPosition:'200% 0'}, '100%':{backgroundPosition:'-200% 0'} },
-        'headline-reveal': {'0%':{opacity:0, transform:'translateY(12px) scale(.98)'}, '100%':{opacity:1, transform:'translateY(0) scale(1)'}},
-        'gradient-flow': {'0%':{backgroundPosition:'0% 50%'}, '100%':{backgroundPosition:'200% 50%'}},
-      },
-      animation: {
-        'float-soft': 'float-soft 6s ease-in-out infinite alternate',
-        'spin-slow': 'spin-slow 18s linear infinite',
-        'shine': 'shine 2s linear infinite',
-        'headline-reveal': 'headline-reveal .9s cubic-bezier(.2,.8,.2,1) forwards',
-        'gradient-flow': 'gradient-flow 8s ease infinite alternate',
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>360 Starreux — Waves. Vows. Wows.</title>
+  <meta name="description"
+    content="360 Starreux crafts luxury & boho-inspired weddings across Mumbai, Alibag, Goa & beyond. Petalscape by 360: bespoke floral design & décor.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            peach: '#EDC9AF',
+            mint: '#D4F3B7',
+            ink: '#0f172a',
+            coal: '#0b0b0b',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            glow: '0 10px 30px rgba(0,0,0,.15)',
+            'soft-lg': '0 24px 60px rgba(0,0,0,.12)',
+          },
+          keyframes: {
+            'float-soft': { '0%': { transform: 'translateY(0)' }, '100%': { transform: 'translateY(-10px)' } },
+            'spin-slow': { '0%': { transform: 'rotate(0)' }, '100%': { transform: 'rotate(360deg)' } },
+            'shine': { '0%': { backgroundPosition: '200% 0' }, '100%': { backgroundPosition: '-200% 0' } },
+            'headline-reveal': { '0%': { opacity: 0, transform: 'translateY(12px) scale(.98)' }, '100%': { opacity: 1, transform: 'translateY(0) scale(1)' } },
+            'gradient-flow': { '0%': { backgroundPosition: '0% 50%' }, '100%': { backgroundPosition: '200% 50%' } },
+          },
+          animation: {
+            'float-soft': 'float-soft 6s ease-in-out infinite alternate',
+            'spin-slow': 'spin-slow 18s linear infinite',
+            'shine': 'shine 2s linear infinite',
+            'headline-reveal': 'headline-reveal .9s cubic-bezier(.2,.8,.2,1) forwards',
+            'gradient-flow': 'gradient-flow 8s ease infinite alternate',
+          }
+        }
       }
     }
-  }
-}
-</script>
+  </script>
 
-<style>
-:root{ --peach:#EDC9AF; --mint:#D4F3B7; }
-html{ scroll-behavior: smooth; }
+  <style>
+    :root {
+      --peach: #EDC9AF;
+      --mint: #D4F3B7;
+    }
 
-/* ===== Scroll Animations (SA) ===== */
-.sa{opacity:0; transform:translateY(14px); transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s cubic-bezier(.2,.8,.2,1), filter .9s}
-.sa.in{opacity:1; transform:none; filter:none}
-.sa.slide-left{transform:translateX(-28px)}
-.sa.slide-right{transform:translateX(28px)}
-.sa.scale-in{transform:scale(.96)}
-.sa.stagger > *{opacity:0; transform:translateY(16px); transition:all .7s cubic-bezier(.2,.8,.2,1)}
-.sa.stagger.in > *{opacity:1; transform:none}
-.sa.stagger.in > *:nth-child(1){transition-delay:.05s}
-.sa.stagger.in > *:nth-child(2){transition-delay:.12s}
-.sa.stagger.in > *:nth-child(3){transition-delay:.18s}
-.sa.stagger.in > *:nth-child(4){transition-delay:.24s}
-.sa.stagger.in > *:nth-child(5){transition-delay:.30s}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* Hero gradients */
-.hero-bg{
-  position:relative; isolation:isolate; overflow:hidden;
-  background:
-    radial-gradient(60% 50% at 10% 10%, rgba(212,243,183,.38), transparent 60%),
-    radial-gradient(45% 55% at 90% 0%, rgba(237,201,175,.48), transparent 65%),
-    linear-gradient(180deg, #ffffff 0%, #fff7f1 60%, #fff1e8 100%);
-}
-.hero-bg::after{
-  content:''; position:absolute; inset:auto -5% 0 -5%; height:260px; z-index:-1; /* slightly shorter for phones */
-  background:
-    radial-gradient(120px 120px at 15% 40%, rgba(237,201,175,.35), transparent 70%),
-    radial-gradient(160px 160px at 85% 30%, rgba(212,243,183,.35), transparent 70%),
-    linear-gradient(90deg, rgba(237,201,175,.25), rgba(212,243,183,.25));
-  filter: blur(26px);
-}
+    /* ===== Scroll Animations (SA) ===== */
+    .sa {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: transform .9s cubic-bezier(.2, .8, .2, 1), opacity .9s cubic-bezier(.2, .8, .2, 1), filter .9s
+    }
 
-/* Waves overlay for subtle motion */
-.waves{
-  position:absolute; inset:0; pointer-events:none; opacity:.14;
-  background:
-    radial-gradient(60px 60px at 20% 30%, var(--peach), transparent 60%),
-    radial-gradient(80px 80px at 80% 20%, var(--mint), transparent 60%);
-  filter: blur(38px);
-  animation: drift 16s ease-in-out infinite alternate;
-}
-@keyframes drift{ 0%{transform:translateY(0)} 100%{transform:translateY(-10px)} }
+    .sa.in {
+      opacity: 1;
+      transform: none;
+      filter: none
+    }
 
-/* Sticky nav */
-.nav-veil{backdrop-filter:blur(10px); background:rgba(255,255,255,.82); border-bottom:1px solid rgba(15,23,42,.06)}
-.nav-scrolled{box-shadow: 0 8px 24px rgba(0,0,0,.08)}
+    .sa.slide-left {
+      transform: translateX(-28px)
+    }
 
-/* Link underline */
-.link-underline{background-image:linear-gradient(90deg, rgba(237,201,175,.9), rgba(212,243,183,.9));
-  background-size:0% 2px; background-repeat:no-repeat; background-position:0 100%; transition:background-size .3s ease}
-.link-underline:hover{background-size:100% 2px}
+    .sa.slide-right {
+      transform: translateX(28px)
+    }
 
-/* Active nav dot */
-.nav a.active::after{
-  content:''; display:block; width:6px; height:6px; margin:4px auto 0; border-radius:9999px;
-  background:linear-gradient(90deg, var(--peach), var(--mint));
-}
+    .sa.scale-in {
+      transform: scale(.96)
+    }
 
-/* Headline gradient flow */
-.headline-flow{
-  background: linear-gradient(90deg, #0f172a, #3b4256, #0f172a);
-  background-size: 200% 100%;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  animation: gradient-flow 8s ease infinite alternate;
-}
+    .sa.stagger>* {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all .7s cubic-bezier(.2, .8, .2, 1)
+    }
 
-/* Mobile menu slide */
-#mobileNav{ transform-origin: top; transform: scaleY(0); transition: transform .25s ease }
-#mobileNav.open{ transform: scaleY(1) }
+    .sa.stagger.in>* {
+      opacity: 1;
+      transform: none
+    }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .sa,.sa.stagger > *{transition:none!important}
-  .waves,.headline-flow{animation:none!important}
-}
+    .sa.stagger.in>*:nth-child(1) {
+      transition-delay: .05s
+    }
 
-/* Hide sparkle canvas on very small screens for perf */
-@media (max-width: 480px){
-  #sparkles{ display:none !important; }
-}
-</style>
+    .sa.stagger.in>*:nth-child(2) {
+      transition-delay: .12s
+    }
+
+    .sa.stagger.in>*:nth-child(3) {
+      transition-delay: .18s
+    }
+
+    .sa.stagger.in>*:nth-child(4) {
+      transition-delay: .24s
+    }
+
+    .sa.stagger.in>*:nth-child(5) {
+      transition-delay: .30s
+    }
+
+    /* Hero gradients */
+    .hero-bg {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(60% 50% at 10% 10%, rgba(212, 243, 183, .38), transparent 60%),
+        radial-gradient(45% 55% at 90% 0%, rgba(237, 201, 175, .48), transparent 65%),
+        linear-gradient(180deg, #ffffff 0%, #fff7f1 60%, #fff1e8 100%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: auto -5% 0 -5%;
+      height: 260px;
+      z-index: -1;
+      /* slightly shorter for phones */
+      background:
+        radial-gradient(120px 120px at 15% 40%, rgba(237, 201, 175, .35), transparent 70%),
+        radial-gradient(160px 160px at 85% 30%, rgba(212, 243, 183, .35), transparent 70%),
+        linear-gradient(90deg, rgba(237, 201, 175, .25), rgba(212, 243, 183, .25));
+      filter: blur(26px);
+    }
+
+    /* Waves overlay for subtle motion */
+    .waves {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .14;
+      background:
+        radial-gradient(60px 60px at 20% 30%, var(--peach), transparent 60%),
+        radial-gradient(80px 80px at 80% 20%, var(--mint), transparent 60%);
+      filter: blur(38px);
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translateY(0)
+      }
+
+      100% {
+        transform: translateY(-10px)
+      }
+    }
+
+    /* Mobile menu panel: closed vs open */
+    #mobileNav {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, opacity .25s ease;
+    }
+
+    /* Pick a value >= menu content height (e.g., 600-800px) */
+    #mobileNav.open {
+      max-height: 640px;
+      opacity: 1;
+    }
+
+
+    /* Sticky nav */
+    .nav-veil {
+      -webkit-backdrop-filter: blur(10px);
+      /* iOS Safari */
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, .82);
+      border-bottom: 1px solid rgba(15, 23, 42, .06);
+    }
+
+    .nav-scrolled {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .08)
+    }
+
+    /* Link underline */
+    .link-underline {
+      background-image: linear-gradient(90deg, rgba(237, 201, 175, .9), rgba(212, 243, 183, .9));
+      background-size: 0% 2px;
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      transition: background-size .3s ease;
+    }
+
+    .link-underline:hover {
+      background-size: 100% 2px
+    }
+
+    .nav a.active::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      margin: 4px auto 0;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, var(--peach), var(--mint));
+    }
+
+
+    /* Headline gradient flow */
+    .headline-flow {
+      background: linear-gradient(90deg, #0f172a, #3b4256, #0f172a);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient-flow 8s ease infinite alternate;
+    }
+
+    /* Mobile menu slide */
+    #mobileNav {
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform .25s ease
+    }
+
+    #mobileNav.open {
+      transform: scaleY(1)
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+
+      .sa,
+      .sa.stagger>* {
+        transition: none !important
+      }
+
+      .waves,
+      .headline-flow {
+        animation: none !important
+      }
+    }
+
+    /* Hide sparkle canvas on very small screens for perf */
+    @media (max-width: 480px) {
+      #sparkles {
+        display: none !important;
+      }
+    }
+
+    .hamburger-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hamburger-line {
+      width: 20px;
+      height: 2px;
+      background-color: #000;
+      /* black */
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease, background-color .2s ease;
+    }
+
+    /* Optional: maintain black in open state too */
+    #menuBtn.open .hamburger-line {
+      background-color: #000;
+    }
+  </style>
 </head>
+
 <body class="font-sans text-ink">
 
-<!-- Scroll progress -->
-<div id="progress" class="fixed top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-peach to-mint z-[80]"></div>
+  <!-- Scroll progress -->
+  <div id="progress" class="fixed top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-peach to-mint z-[80]"></div>
 
-<!-- Sparkle Canvas (very light; auto-hides on tiny screens) -->
-<canvas id="sparkles" class="fixed inset-0 -z-[1] pointer-events-none"></canvas>
+  <!-- Sparkle Canvas (very light; auto-hides on tiny screens) -->
+  <canvas id="sparkles" class="fixed inset-0 -z-[1] pointer-events-none"></canvas>
 
-<!-- ===== NAV ===== -->
-<header id="nav" class="sticky top-0 z-[70] nav-veil transition-shadow">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="#home" class="flex items-center gap-3">
-      <img src="companylogo.jpg" alt="360 Starreux" class="h-10 w-auto md:h-14">
-      <span class="sr-only">360 Starreux</span>
-    </a>
-    <nav class="nav hidden md:flex items-center gap-6 lg:gap-8 text-[15px]">
-      <a href="#home" class="link-underline py-2">Home</a>
-      <a href="#experience" class="link-underline py-2">The 360° Experience</a>
-      <a href="#petalscape" class="link-underline py-2">Petalscape</a>
-      <a href="#love" class="link-underline py-2">Echoes of Love</a>
-      <a href="#contact" class="link-underline py-2">Contact</a>
-      <a href="#contact" class="inline-flex items-center rounded-full bg-peach px-4 py-2 font-semibold hover:shadow-glow text-sm">Let’s Create Magic</a>
-    </nav>
-    <button id="menuBtn" class="md:hidden rounded-lg border px-3 py-2 text-sm">Menu</button>
-  </div>
-  <!-- Mobile menu -->
-  <div id="mobileNav" class="md:hidden border-t origin-top bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 grid">
-      <a href="#home" class="py-3 text-base">Home</a>
-      <a href="#experience" class="py-3 text-base">The 360° Experience</a>
-      <a href="#petalscape" class="py-3 text-base">Petalscape</a>
-      <a href="#love" class="py-3 text-base">Echoes of Love</a>
-      <a href="#contact" class="py-3 text-base">Contact</a>
-      <a href="#contact" class="mt-2 mb-3 rounded-lg bg-peach px-4 py-3 text-center font-semibold">Let’s Create Magic</a>
-    </div>
-  </div>
-</header>
+  <!-- ===== IMPROVED NAV ===== -->
+  <header id="nav"
+    class="fixed top-0 left-0 right-0 z-[70] bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <img src="companylogo.jpg" alt="360 Starreux"
+            class="h-12 w-auto sm:h-12 md:h-14 lg:h-16 transition-transform duration-300 group-hover:scale-105">
+          <span class="sr-only">360 Starreux</span>
+        </a>
 
-<!-- ===== HERO ===== -->
-<section id="home" class="hero-bg relative overflow-hidden">
-  <div class="waves"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-    <div class="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
-      <div class="sa">
-        <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium tracking-widest uppercase text-ink/70">
-          Crafting Waves of Love & Luxury
-        </span>
-        <h1 class="font-display text-3xl sm:text-4xl lg:text-6xl leading-tight mt-2 sm:mt-3">
-          <span class="headline-flow inline-block animate-headline-reveal">Waves. Vows. Wows.</span>
-        </h1>
-        <p class="mt-3 sm:mt-4 text-[15px] sm:text-base text-ink/80 max-w-xl">
-          At 360 Starreux, we don’t just plan weddings – we craft unforgettable experiences.
-          Specializing in luxury and boho-inspired celebrations across Mumbai, Alibag, Goa & beyond.
-        </p>
-        <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3">
-          <a href="#experience" class="rounded-full bg-ink text-white px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm">Explore the 360° Way</a>
-          <a href="#contact" class="rounded-full border px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:bg-black/5 text-sm">Start Your Story</a>
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8 xl:gap-10">
+          <a href="#home"
+            class="nav-link relative py-2 text-gray-700 hover:text-gray-900 transition-colors duration-200">
+            Home
+          </a>
+          <a href="#experience"
+            class="nav-link relative py-2 text-gray-700 hover:text-gray-900 transition-colors duration-200">
+            The 360° Experience
+          </a>
+          <a href="#petalscape"
+            class="nav-link relative py-2 text-gray-700 hover:text-gray-900 transition-colors duration-200">
+            Petalscape
+          </a>
+          <a href="#love"
+            class="nav-link relative py-2 text-gray-700 hover:text-gray-900 transition-colors duration-200">
+            Echoes of Love
+          </a>
+          <a href="#contact"
+            class="nav-link relative py-2 text-gray-700 hover:text-gray-900 transition-colors duration-200">
+            Contact
+          </a>
+        </nav>
+
+        <!-- CTA Button & Mobile Menu -->
+        <div class="flex items-center gap-4">
+          <!-- Reverted to original peach color -->
+          <a href="#contact"
+            class="hidden sm:inline-flex items-center justify-center rounded-full bg-peach px-6 py-2.5 text-sm font-semibold hover:shadow-glow transition-all duration-300">
+            Let's Create Magic
+          </a>
+
+          <!-- Hamburger Menu Button -->
+          <button id="menuBtn"
+            class="lg:hidden relative w-10 h-10 rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-center group"
+            aria-label="Toggle menu">
+            <div class="hamburger-lines">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </div>
+          </button>
         </div>
+      </div>
+    </div>
 
-        <div class="mt-7 sm:mt-8 grid grid-cols-3 gap-3 sm:gap-4 max-w-md sa stagger">
-          <div class="rounded-xl border p-3 sm:p-4 text-center">
-            <div class="text-lg sm:text-2xl font-extrabold">Luxury</div>
-            <div class="text-[10px] sm:text-xs text-ink/70">Coastal Destinations</div>
+    <!-- Mobile Navigation Menu -->
+    <div id="mobileNav"
+      class="lg:hidden bg-white border-b border-gray-100 shadow-lg overflow-hidden transition-all duration-300 max-h-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+        <nav class="flex flex-col space-y-1">
+          <a href="#home"
+            class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
+            Home
+          </a>
+          <a href="#experience"
+            class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
+            The 360° Experience
+          </a>
+          <a href="#petalscape"
+            class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
+            Petalscape
+          </a>
+          <a href="#love"
+            class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
+            Echoes of Love
+          </a>
+          <a href="#contact"
+            class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200">
+            Contact
+          </a>
+
+          <!-- Mobile CTA - Also reverted to original peach color -->
+          <div class="pt-4 mt-4 border-t border-gray-100">
+            <a href="#contact"
+              class="block w-full text-center rounded-full bg-peach px-6 py-3 font-semibold hover:shadow-glow transition-all duration-300">
+              Let's Create Magic
+            </a>
           </div>
-          <div class="rounded-xl border p-3 sm:p-4 text-center">
-            <div class="text-lg sm:text-2xl font-extrabold">Boho</div>
-            <div class="text-[10px] sm:text-xs text-ink/70">Soulful Styling</div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero-bg relative overflow-hidden">
+    <div class="waves"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div class="sa">
+          <span
+            class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium tracking-widest uppercase text-ink/70">
+            Crafting Waves of Love & Luxury
+          </span>
+          <h1 class="font-display text-3xl sm:text-4xl lg:text-6xl leading-tight mt-2 sm:mt-3">
+            <span class="headline-flow inline-block animate-headline-reveal">Waves. Vows. Wows.</span>
+          </h1>
+          <p class="mt-3 sm:mt-4 text-[15px] sm:text-base text-ink/80 max-w-xl">
+            At 360 Starreux, we don’t just plan weddings – we craft unforgettable experiences.
+            Specializing in luxury and boho-inspired celebrations across Mumbai, Alibag, Goa & beyond.
+          </p>
+          <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3">
+            <a href="#experience"
+              class="rounded-full bg-ink text-white px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm">Explore
+              the 360° Way</a>
+            <a href="#contact"
+              class="rounded-full border px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:bg-black/5 text-sm">Start Your
+              Story</a>
           </div>
-          <div class="rounded-xl border p-3 sm:p-4 text-center">
-            <div class="text-lg sm:text-2xl font-extrabold">Curated</div>
-            <div class="text-[10px] sm:text-xs text-ink/70">End-to-End Care</div>
+
+          <div class="mt-7 sm:mt-8 grid grid-cols-3 gap-3 sm:gap-4 max-w-md sa stagger">
+            <div class="rounded-xl border p-3 sm:p-4 text-center">
+              <div class="text-lg sm:text-2xl font-extrabold">Luxury</div>
+              <div class="text-[10px] sm:text-xs text-ink/70">Coastal Destinations</div>
+            </div>
+            <div class="rounded-xl border p-3 sm:p-4 text-center">
+              <div class="text-lg sm:text-2xl font-extrabold">Boho</div>
+              <div class="text-[10px] sm:text-xs text-ink/70">Soulful Styling</div>
+            </div>
+            <div class="rounded-xl border p-3 sm:p-4 text-center">
+              <div class="text-lg sm:text-2xl font-extrabold">Curated</div>
+              <div class="text-[10px] sm:text-xs text-ink/70">End-to-End Care</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative sa slide-right">
+          <div
+            class="absolute -top-8 -left-8 w-28 sm:w-40 h-28 sm:h-40 rounded-full bg-peach/50 blur-2xl animate-float-soft">
+          </div>
+          <div
+            class="absolute -bottom-8 -right-8 w-32 sm:w-44 h-32 sm:h-44 rounded-full bg-mint/50 blur-2xl animate-float-soft">
+          </div>
+
+          <!-- Use aspect ratio for consistent media height on phones -->
+          <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-glow border sa scale-in">
+            <img class="w-full h-full object-cover aspect-[4/3]" loading="lazy"
+              src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop"
+              alt="Coastal luxury wedding">
+          </div>
+
+          <div class="absolute -bottom-8 left-3 sm:left-6 hidden xs:block sm:block sa">
+            <div class="rounded-xl sm:rounded-2xl overflow-hidden border shadow-glow w-28 sm:w-40">
+              <img class="w-full h-full object-cover aspect-[4/5]" loading="lazy"
+                src="https://images.unsplash.com/photo-1541535881962-3bb380b08458?q=80&w=1000&auto=format&fit=crop"
+                alt="Boho décor">
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="relative sa slide-right">
-        <div class="absolute -top-8 -left-8 w-28 sm:w-40 h-28 sm:h-40 rounded-full bg-peach/50 blur-2xl animate-float-soft"></div>
-        <div class="absolute -bottom-8 -right-8 w-32 sm:w-44 h-32 sm:h-44 rounded-full bg-mint/50 blur-2xl animate-float-soft"></div>
+  <!-- ===== PAGE 2: The 360° Experience ===== -->
+  <section id="experience" class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute -right-24 -top-24 w-[300px] sm:w-[420px] h-[300px] sm:h-[420px] rounded-full bg-peach/40 blur-3xl animate-spin-slow">
+    </div>
 
-        <!-- Use aspect ratio for consistent media height on phones -->
-        <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-glow border sa scale-in">
-          <img class="w-full h-full object-cover aspect-[4/3]" loading="lazy"
-               src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop"
-               alt="Coastal luxury wedding">
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <header class="text-center">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl sa">The 360° Experience</h2>
+        <p class="mt-2 text-ink/70 text-sm sm:text-base sa">Every wedding deserves a 360° touch of perfection.</p>
+      </header>
 
-        <div class="absolute -bottom-8 left-3 sm:left-6 hidden xs:block sm:block sa">
-          <div class="rounded-xl sm:rounded-2xl overflow-hidden border shadow-glow w-28 sm:w-40">
-            <img class="w-full h-full object-cover aspect-[4/5]" loading="lazy"
-                 src="https://images.unsplash.com/photo-1541535881962-3bb380b08458?q=80&w=1000&auto=format&fit=crop"
-                 alt="Boho décor">
+      <div class="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Service Cards -->
+        <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-left">
+          <h3 class="font-semibold text-base sm:text-lg">Complete Wedding Planning</h3>
+          <p class="text-sm text-ink/70 mt-1">End-to-end management with precision & creativity.</p>
+        </article>
+        <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa">
+          <h3 class="font-semibold text-base sm:text-lg">Venue Curation</h3>
+          <p class="text-sm text-ink/70 mt-1">Handpicked destinations in Mumbai, Alibag & Goa.</p>
+        </article>
+        <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-right">
+          <h3 class="font-semibold text-base sm:text-lg">Design & Styling</h3>
+          <p class="text-sm text-ink/70 mt-1">Luxury meets boho elegance.</p>
+        </article>
+        <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-left">
+          <h3 class="font-semibold text-base sm:text-lg">Décor & Floral Arrangements</h3>
+          <p class="text-sm text-ink/70 mt-1">Aesthetic spaces crafted with flair.</p>
+        </article>
+        <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa">
+          <h3 class="font-semibold text-base sm:text-lg">Hospitality & Guest Management</h3>
+          <p class="text-sm text-ink/70 mt-1">Seamless comfort for your loved ones.</p>
+        </article>
+        <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-right">
+          <h3 class="font-semibold text-base sm:text-lg">Entertainment & Experiences</h3>
+          <p class="text-sm text-ink/70 mt-1">Curated performances & moments.</p>
+        </article>
+        <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sm:col-span-2 lg:col-span-3 sa">
+          <h3 class="font-semibold text-base sm:text-lg">Luxury Catering & Bar Solutions</h3>
+          <p class="text-sm text-ink/70 mt-1">Fine dining experiences that delight.</p>
+        </article>
+      </div>
+
+      <!-- Process -->
+      <div class="mt-12 sm:mt-16">
+        <h3 class="font-display text-xl sm:text-2xl sa">Our Process</h3>
+        <p class="text-ink/70 text-sm sm:text-base sa">Crafting weddings with clarity, creativity & care.</p>
+
+        <div class="mt-6 sm:mt-8 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 sa stagger">
+          <div class="rounded-xl border p-4">
+            <div class="text-xl sm:text-2xl font-extrabold">01</div>
+            <div class="font-semibold mt-1">Consultation & Discovery</div>
+            <p class="text-sm text-ink/70 mt-1">We listen to your story.</p>
+          </div>
+          <div class="rounded-xl border p-4">
+            <div class="text-xl sm:text-2xl font-extrabold">02</div>
+            <div class="font-semibold mt-1">Concept & Design</div>
+            <p class="text-sm text-ink/70 mt-1">Themes & décor that reflect you.</p>
+          </div>
+          <div class="rounded-xl border p-4">
+            <div class="text-xl sm:text-2xl font-extrabold">03</div>
+            <div class="font-semibold mt-1">Planning & Coordination</div>
+            <p class="text-sm text-ink/70 mt-1">Vendors & schedules.</p>
+          </div>
+          <div class="rounded-xl border p-4">
+            <div class="text-xl sm:text-2xl font-extrabold">04</div>
+            <div class="font-semibold mt-1">Execution with Precision</div>
+            <p class="text-sm text-ink/70 mt-1">On-ground detailing.</p>
+          </div>
+          <div class="rounded-xl border p-4">
+            <div class="text-xl sm:text-2xl font-extrabold">05</div>
+            <div class="font-semibold mt-1">The 360° Experience</div>
+            <p class="text-sm text-ink/70 mt-1">Luxury meets love.</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== PAGE 2: The 360° Experience ===== -->
-<section id="experience" class="relative overflow-hidden">
-  <div class="pointer-events-none absolute -right-24 -top-24 w-[300px] sm:w-[420px] h-[300px] sm:h-[420px] rounded-full bg-peach/40 blur-3xl animate-spin-slow"></div>
+  <!-- ===== PAGE 3: Petalscape ===== -->
+  <section id="petalscape" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-[1] bg-gradient-to-b from-white via-mint/25 to-white"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-    <header class="text-center">
-      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl sa">The 360° Experience</h2>
-      <p class="mt-2 text-ink/70 text-sm sm:text-base sa">Every wedding deserves a 360° touch of perfection.</p>
-    </header>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <header class="text-center mb-8 sm:mb-10 sa">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-ink">Petalscape</h2>
+        <p class="mt-2 text-ink/70 text-sm sm:text-base">Floral Design & Décor by 360 Starreux</p>
+      </header>
 
-    <div class="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      <!-- Service Cards -->
-      <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-left">
-        <h3 class="font-semibold text-base sm:text-lg">Complete Wedding Planning</h3>
-        <p class="text-sm text-ink/70 mt-1">End-to-end management with precision & creativity.</p>
-      </article>
-      <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa">
-        <h3 class="font-semibold text-base sm:text-lg">Venue Curation</h3>
-        <p class="text-sm text-ink/70 mt-1">Handpicked destinations in Mumbai, Alibag & Goa.</p>
-      </article>
-      <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-right">
-        <h3 class="font-semibold text-base sm:text-lg">Design & Styling</h3>
-        <p class="text-sm text-ink/70 mt-1">Luxury meets boho elegance.</p>
-      </article>
-      <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-left">
-        <h3 class="font-semibold text-base sm:text-lg">Décor & Floral Arrangements</h3>
-        <p class="text-sm text-ink/70 mt-1">Aesthetic spaces crafted with flair.</p>
-      </article>
-      <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa">
-        <h3 class="font-semibold text-base sm:text-lg">Hospitality & Guest Management</h3>
-        <p class="text-sm text-ink/70 mt-1">Seamless comfort for your loved ones.</p>
-      </article>
-      <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sa slide-right">
-        <h3 class="font-semibold text-base sm:text-lg">Entertainment & Experiences</h3>
-        <p class="text-sm text-ink/70 mt-1">Curated performances & moments.</p>
-      </article>
-      <article class="rounded-2xl border p-4 sm:p-6 hover:shadow-glow transition sm:col-span-2 lg:col-span-3 sa">
-        <h3 class="font-semibold text-base sm:text-lg">Luxury Catering & Bar Solutions</h3>
-        <p class="text-sm text-ink/70 mt-1">Fine dining experiences that delight.</p>
-      </article>
-    </div>
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div class="sa slide-left">
 
-    <!-- Process -->
-    <div class="mt-12 sm:mt-16">
-      <h3 class="font-display text-xl sm:text-2xl sa">Our Process</h3>
-      <p class="text-ink/70 text-sm sm:text-base sa">Crafting weddings with clarity, creativity & care.</p>
+          <h3 class="font-display text-2xl sm:text-3xl md:text-4xl mt-2 sm:mt-3">Petals. Passion. Perfection.</h3>
+          <p class="text-ink/70 mt-1 text-sm sm:text-base">Where Every Bloom Tells Your Story</p>
+          <p class="mt-3 sm:mt-4 text-ink/80 text-sm sm:text-base">
+            Petalscape is the floral design and décor division of 360 Starreux. We specialize in transforming spaces
+            with bespoke floral artistry.
+          </p>
 
-      <div class="mt-6 sm:mt-8 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 sa stagger">
-        <div class="rounded-xl border p-4">
-          <div class="text-xl sm:text-2xl font-extrabold">01</div>
-          <div class="font-semibold mt-1">Consultation & Discovery</div>
-          <p class="text-sm text-ink/70 mt-1">We listen to your story.</p>
+          <ul class="mt-5 sm:mt-6 space-y-2 sm:space-y-3 text-ink/80 text-sm sm:text-base sa stagger">
+            <li>• <b>Floral Designing</b> – Concepts that blend nature with style.</li>
+            <li>• <b>Floral Arrangements</b> – From intimate setups to grand installations.</li>
+            <li>• <b>Residential & Intimate Décor</b> – Celebrations at home, reimagined.</li>
+            <li>• <b>Wedding Aisles & Entryways</b> – Where magical journeys begin.</li>
+            <li>• <b>Floral Installations & Backdrops</b> – Picture-perfect elegance.</li>
+          </ul>
+
+          <div class="mt-6 sm:mt-8 flex flex-wrap gap-3 sa">
+            <a href="#contact"
+              class="rounded-full bg-mint px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm">Enquire
+              Petalscape</a>
+            <a href="#love"
+              class="rounded-full border px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:bg-black/5 text-sm">See
+              Testimonials</a>
+          </div>
         </div>
-        <div class="rounded-xl border p-4">
-          <div class="text-xl sm:text-2xl font-extrabold">02</div>
-          <div class="font-semibold mt-1">Concept & Design</div>
-          <p class="text-sm text-ink/70 mt-1">Themes & décor that reflect you.</p>
-        </div>
-        <div class="rounded-xl border p-4">
-          <div class="text-xl sm:text-2xl font-extrabold">03</div>
-          <div class="font-semibold mt-1">Planning & Coordination</div>
-          <p class="text-sm text-ink/70 mt-1">Vendors & schedules.</p>
-        </div>
-        <div class="rounded-xl border p-4">
-          <div class="text-xl sm:text-2xl font-extrabold">04</div>
-          <div class="font-semibold mt-1">Execution with Precision</div>
-          <p class="text-sm text-ink/70 mt-1">On-ground detailing.</p>
-        </div>
-        <div class="rounded-xl border p-4">
-          <div class="text-xl sm:text-2xl font-extrabold">05</div>
-          <div class="font-semibold mt-1">The 360° Experience</div>
-          <p class="text-sm text-ink/70 mt-1">Luxury meets love.</p>
+
+        <div class="sa slide-right relative">
+          <div class="rounded-2xl sm:rounded-3xl overflow-hidden border shadow-glow">
+            <img src="petalscape.png" alt="Floral aisle and décor" class="w-full h-full object-cover aspect-[4/3]"
+              loading="lazy">
+          </div>
+          <div
+            class="absolute -top-6 sm:-top-8 -right-6 sm:-right-8 w-28 sm:w-36 h-28 sm:h-36 rounded-full bg-mint/50 blur-2xl animate-float-soft">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== PAGE 3: Petalscape ===== -->
-<section id="petalscape" class="relative overflow-hidden">
-  <div class="absolute inset-0 -z-[1] bg-gradient-to-b from-white via-mint/25 to-white"></div>
+  <!-- ===== PAGE 4: Testimonials ===== -->
+  <section id="love" class="relative">
+    <div
+      class="pointer-events-none absolute -left-16 sm:-left-24 -top-16 sm:-top-24 w-[300px] sm:w-[420px] h-[300px] sm:h-[420px] rounded-full bg-mint/40 blur-3xl animate-spin-slow">
+    </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-    <header class="text-center mb-8 sm:mb-10 sa">
-      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-ink">Petalscape</h2>
-      <p class="mt-2 text-ink/70 text-sm sm:text-base">Floral Design & Décor by 360 Starreux</p>
-    </header>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <header class="text-center">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl sa">Echoes of Love</h2>
+        <p class="text-ink/70 mt-2 text-sm sm:text-base sa">Words from couples & families.</p>
+      </header>
 
-    <div class="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
-      <div class="sa slide-left">
-      
-        <h3 class="font-display text-2xl sm:text-3xl md:text-4xl mt-2 sm:mt-3">Petals. Passion. Perfection.</h3>
-        <p class="text-ink/70 mt-1 text-sm sm:text-base">Where Every Bloom Tells Your Story</p>
-        <p class="mt-3 sm:mt-4 text-ink/80 text-sm sm:text-base">
-          Petalscape is the floral design and décor division of 360 Starreux. We specialize in transforming spaces with bespoke floral artistry.
-        </p>
-
-        <ul class="mt-5 sm:mt-6 space-y-2 sm:space-y-3 text-ink/80 text-sm sm:text-base sa stagger">
-          <li>• <b>Floral Designing</b> – Concepts that blend nature with style.</li>
-          <li>• <b>Floral Arrangements</b> – From intimate setups to grand installations.</li>
-          <li>• <b>Residential & Intimate Décor</b> – Celebrations at home, reimagined.</li>
-          <li>• <b>Wedding Aisles & Entryways</b> – Where magical journeys begin.</li>
-          <li>• <b>Floral Installations & Backdrops</b> – Picture-perfect elegance.</li>
-        </ul>
-
-        <div class="mt-6 sm:mt-8 flex flex-wrap gap-3 sa">
-          <a href="#contact" class="rounded-full bg-mint px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm">Enquire Petalscape</a>
-          <a href="#love" class="rounded-full border px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:bg-black/5 text-sm">See Testimonials</a>
-        </div>
-      </div>
-
-      <div class="sa slide-right relative">
-        <div class="rounded-2xl sm:rounded-3xl overflow-hidden border shadow-glow">
-          <img src="petalscape.png"
-               alt="Floral aisle and décor" class="w-full h-full object-cover aspect-[4/3]" loading="lazy">
-        </div>
-        <div class="absolute -top-6 sm:-top-8 -right-6 sm:-right-8 w-28 sm:w-36 h-28 sm:h-36 rounded-full bg-mint/50 blur-2xl animate-float-soft"></div>
+      <div class="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 sa stagger">
+        <blockquote class="rounded-2xl border p-5 sm:p-6 bg-white/70">
+          <p class="italic text-sm sm:text-base">“360 Starreux turned our dream wedding into reality. Every detail was
+            perfect, every moment magical.”</p>
+          <footer class="mt-3 text-xs sm:text-sm text-ink/70">— Naina & Nikhil</footer>
+        </blockquote>
+        <blockquote class="rounded-2xl border p-5 sm:p-6 bg-white/70">
+          <p class="italic text-sm sm:text-base">“The team made our Goa wedding seamless, stylish, and unforgettable.
+            Couldn’t have asked for more.”</p>
+          <footer class="mt-3 text-xs sm:text-sm text-ink/70">— Jeet & Drishti</footer>
+        </blockquote>
+        <blockquote class="rounded-2xl border p-5 sm:p-6 bg-white/70">
+          <p class="italic text-sm sm:text-base">“Petalscape’s floral décor left our guests in awe – it was elegance
+            redefined.”</p>
+          <footer class="mt-3 text-xs sm:text-sm text-ink/70">— Ayesha</footer>
+        </blockquote>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== PAGE 4: Testimonials ===== -->
-<section id="love" class="relative">
-  <div class="pointer-events-none absolute -left-16 sm:-left-24 -top-16 sm:-top-24 w-[300px] sm:w-[420px] h-[300px] sm:h-[420px] rounded-full bg-mint/40 blur-3xl animate-spin-slow"></div>
+  <!-- ===== PAGE 5: Contact ===== -->
+  <section id="contact" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-[1] bg-gradient-to-b from-peach/20 via-white to-mint/20"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-    <header class="text-center">
-      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl sa">Echoes of Love</h2>
-      <p class="text-ink/70 mt-2 text-sm sm:text-base sa">Words from couples & families.</p>
-    </header>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <header class="text-center">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl sa">Get In Touch</h2>
+        <p class="text-ink/70 mt-2 text-sm sm:text-base sa">Let’s craft your story. Where love meets luxury.</p>
+      </header>
 
-    <div class="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 sa stagger">
-      <blockquote class="rounded-2xl border p-5 sm:p-6 bg-white/70">
-        <p class="italic text-sm sm:text-base">“360 Starreux turned our dream wedding into reality. Every detail was perfect, every moment magical.”</p>
-        <footer class="mt-3 text-xs sm:text-sm text-ink/70">— Naina & Nikhil</footer>
-      </blockquote>
-      <blockquote class="rounded-2xl border p-5 sm:p-6 bg-white/70">
-        <p class="italic text-sm sm:text-base">“The team made our Goa wedding seamless, stylish, and unforgettable. Couldn’t have asked for more.”</p>
-        <footer class="mt-3 text-xs sm:text-sm text-ink/70">— Jeet & Drishti</footer>
-      </blockquote>
-      <blockquote class="rounded-2xl border p-5 sm:p-6 bg-white/70">
-        <p class="italic text-sm sm:text-base">“Petalscape’s floral décor left our guests in awe – it was elegance redefined.”</p>
-        <footer class="mt-3 text-xs sm:text-sm text-ink/70">— Ayesha</footer>
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PAGE 5: Contact ===== -->
-<section id="contact" class="relative overflow-hidden">
-  <div class="absolute inset-0 -z-[1] bg-gradient-to-b from-peach/20 via-white to-mint/20"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-    <header class="text-center">
-      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl sa">Get In Touch</h2>
-      <p class="text-ink/70 mt-2 text-sm sm:text-base sa">Let’s craft your story. Where love meets luxury.</p>
-    </header>
-
-    <div class="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-      <div class="rounded-2xl border p-5 sm:p-6 bg-white/70 sa slide-left">
-        <h3 class="font-semibold text-base sm:text-lg">Contact</h3>
-        <ul class="mt-3 space-y-2 text-ink/80 text-sm sm:text-base">
-          <li>📞 <a class="link-underline" href="tel:+919004261214">+91 90042 61214</a></li>
-          <li>📧 <a class="link-underline" href="mailto:info@360starreux.in">info@360starreux.in</a></li>
-          <li>📸 Instagram:
-            <a class="link-underline" href="https://instagram.com/_360.starreux_" target="_blank">@_360.starreux_</a> |
-            <a class="link-underline" href="https://instagram.com/petal.scape_by360" target="_blank">petal.scape_by360</a>
-          </li>
-        </ul>
-        <div class="mt-5 sm:mt-6 flex flex-wrap gap-3">
-          <a href="#" class="rounded-full bg-ink text-white px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm">Book a Consultation</a>
-          <a href="https://wa.me/919004261214" target="_blank" class="rounded-full border px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:bg-black/5 text-sm">WhatsApp</a>
+      <div class="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div class="rounded-2xl border p-5 sm:p-6 bg-white/70 sa slide-left">
+          <h3 class="font-semibold text-base sm:text-lg">Contact</h3>
+          <ul class="mt-3 space-y-2 text-ink/80 text-sm sm:text-base">
+            <li>📞 <a class="link-underline" href="tel:+919004261214">+91 90042 61214</a></li>
+            <li>📧 <a class="link-underline" href="mailto:info@360starreux.in">info@360starreux.in</a></li>
+            <li>📸 Instagram:
+              <a class="link-underline" href="https://instagram.com/_360.starreux_" target="_blank">@_360.starreux_</a>
+              |
+              <a class="link-underline" href="https://instagram.com/petal.scape_by360"
+                target="_blank">petal.scape_by360</a>
+            </li>
+          </ul>
+          <div class="mt-5 sm:mt-6 flex flex-wrap gap-3">
+            <a href="#"
+              class="rounded-full bg-ink text-white px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm">Book
+              a Consultation</a>
+            <a href="https://wa.me/919004261214" target="_blank"
+              class="rounded-full border px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:bg-black/5 text-sm">WhatsApp</a>
+          </div>
         </div>
+
+        <form class="rounded-2xl border p-5 sm:p-6 bg-white/70 grid gap-3 sm:gap-4 sa slide-right">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <input class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Your Name" required>
+            <input class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Phone / WhatsApp">
+          </div>
+          <input type="email" class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Email"
+            required>
+          <input class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base"
+            placeholder="Preferred Location (e.g., Goa)">
+          <textarea rows="4" class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base"
+            placeholder="Tell us about your celebration…"></textarea>
+          <button
+            class="rounded-xl bg-peach px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm sm:text-base">Send
+            Enquiry</button>
+        </form>
       </div>
-
-      <form class="rounded-2xl border p-5 sm:p-6 bg-white/70 grid gap-3 sm:gap-4 sa slide-right">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          <input class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Your Name" required>
-          <input class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Phone / WhatsApp">
-        </div>
-        <input type="email" class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Email" required>
-        <input class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Preferred Location (e.g., Goa)">
-        <textarea rows="4" class="w-full rounded-xl border px-4 py-3 text-sm sm:text-base" placeholder="Tell us about your celebration…"></textarea>
-        <button class="rounded-xl bg-peach px-5 sm:px-6 py-2.5 sm:py-3 font-semibold hover:shadow-glow text-sm sm:text-base">Send Enquiry</button>
-      </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="border-t">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-xs sm:text-sm text-ink/70 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div>© <span id="y"></span> 360 Starreux. All rights reserved.</div>
-    <div class="flex items-center gap-5">
-      <a href="https://www.talentronaut.in/" class="link-underline">Designed by Talentronaut Technologies.</a>
-      <a href="#contact" class="link-underline">Contact</a>
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-xs sm:text-sm text-ink/70 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>© <span id="y"></span> 360 Starreux. All rights reserved.</div>
+      <div class="flex items-center gap-5">
+        <a href="https://www.talentronaut.in/" class="link-underline">Designed by Talentronaut Technologies.</a>
+        <a href="#contact" class="link-underline">Contact</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- ===== Scripts: progress, nav, scroll-animations, scrollspy, parallax (disabled on touch), sparkles, mobile menu ===== -->
-<script>
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
+  <!-- ===== Scripts: progress, nav, scroll-animations, scrollspy, parallax (disabled on touch), sparkles, mobile menu ===== -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Year
+      const y = document.getElementById('y');
+      if (y) y.textContent = new Date().getFullYear();
 
-  // Mobile menu slide toggle
-  const mb = document.getElementById('menuBtn');
-  const mn = document.getElementById('mobileNav');
-  let navOpen = false;
-  const toggleNav = ()=>{ navOpen = !navOpen; mn.classList.toggle('open', navOpen); mn.classList.toggle('hidden', !navOpen); };
-  mb.addEventListener('click', toggleNav);
-  // Close on link tap
-  mn.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{ if(navOpen) toggleNav(); }));
+      // Mobile menu toggle (robust)
+      const mb = document.getElementById('menuBtn');
+      const mn = document.getElementById('mobileNav');
+      let navOpen = false;
+      let touching = false; // avoid double fire on touch devices
 
-  // Scroll progress + nav elevation
-  const pr = document.getElementById('progress');
-  const header = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const h=document.documentElement, sc=h.scrollTop, max=h.scrollHeight-h.clientHeight;
-    pr.style.width = (sc/max) * 100 + '%';
-    header.classList.toggle('nav-scrolled', sc > 4);
-  }, {passive:true});
+      const openMenu = (open) => {
+        navOpen = typeof open === 'boolean' ? open : !navOpen;
+        if (!mn) return;
+        mn.classList.toggle('open', navOpen);
+        // Do NOT toggle "hidden" alongside animated states; rely on max-height/opacity CSS
+        document.body.style.overflow = navOpen ? 'hidden' : '';
+        if (mb) mb.classList.toggle('open', navOpen);
+      };
 
-  // Enhanced scroll animations
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
-  }, {threshold:.16, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.sa').forEach(el => io.observe(el));
+      if (mb && mn) {
+        const activate = (e) => {
+          if (touching && e.type === 'click') return; // ignore synthetic click after touch
+          openMenu();
+        };
+        mb.addEventListener('click', activate, { passive: true });
+        mb.addEventListener('touchstart', (e) => { touching = true; activate(e); }, { passive: true });
 
-  // ScrollSpy: highlight current section link
-  const sections = [...document.querySelectorAll('section[id]')];
-  const navLinks = [...document.querySelectorAll('header .nav a[href^="#"]')];
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        // Close on link tap/click
+        mn.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => openMenu(false), { passive: true });
+          a.addEventListener('touchstart', () => openMenu(false), { passive: true });
+        });
+
+        // Close when tapping outside
+        document.addEventListener('click', (e) => {
+          if (!navOpen) return;
+          const t = e.target;
+          if (t && !mn.contains(t) && !mb.contains(t)) openMenu(false);
+        }, { passive: true });
+
+        // Reset on desktop breakpoint
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 1024 && navOpen) openMenu(false);
+        }, { passive: true });
+      }
+
+      // Scroll progress + nav elevation
+      const pr = document.getElementById('progress');
+      const header = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement, sc = h.scrollTop, max = h.scrollHeight - h.clientHeight;
+        if (pr) pr.style.width = (max ? (sc / max) : 0) * 100 + '%';
+        if (header) header.classList.toggle('nav-scrolled', sc > 4);
+      }, { passive: true });
+
+      // Enhanced scroll animations
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+      }, { threshold: .16, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.sa').forEach(el => io.observe(el));
+
+      // ScrollSpy
+      const sections = [...document.querySelectorAll('section[id]')];
+      const navLinks = [...document.querySelectorAll('header .nav a[href^="#"]')];
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0.01 });
+      sections.forEach(s => spy.observe(s));
+
+      // Parallax (disabled on touch)
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (!isTouch) {
+        const parallaxTargets = document.querySelectorAll('#home img');
+        window.addEventListener('scroll', () => {
+          const y = window.scrollY * 0.05;
+          parallaxTargets.forEach(img => img.style.transform = `translateY(${y}px) scale(1.02)`);
+        }, { passive: true });
+      }
+
+      // Sparkles
+      const canvas = document.getElementById('sparkles');
+      if (canvas && canvas.getContext) {
+        const ctx = canvas.getContext('2d');
+        const R = window.devicePixelRatio || 1;
+        let w, h, particles = [];
+        function resize() {
+          w = canvas.width = innerWidth * R;
+          h = canvas.height = innerHeight * R;
+          canvas.style.width = innerWidth + 'px';
+          canvas.style.height = innerHeight + 'px';
+        }
+        function initParticles(count = 28) {
+          particles = Array.from({ length: count }, () => ({
+            x: Math.random() * w, y: Math.random() * h,
+            r: Math.random() * 2 * R + 0.6 * R,
+            a: Math.random() * Math.PI * 2,
+            s: (Math.random() * 0.4 + 0.1) * R
+          }));
+        }
+        function tick() {
+          ctx.clearRect(0, 0, w, h);
+          particles.forEach(p => {
+            p.a += 0.01; p.x += Math.cos(p.a) * p.s; p.y += Math.sin(p.a) * p.s * 0.6;
+            if (p.x < -10 || p.x > w + 10 || p.y < -10 || p.y > h + 10) { p.x = Math.random() * w; p.y = Math.random() * h; }
+            const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+            g.addColorStop(0, 'rgba(237,201,175,.35)'); g.addColorStop(1, 'rgba(212,243,183,0)');
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2); ctx.fill();
+          });
+          requestAnimationFrame(tick);
+        }
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        resize(); initParticles(prefersReduced ? 0 : (innerWidth < 480 ? 16 : 28)); if (!prefersReduced) tick();
+        window.addEventListener('resize', () => { resize(); initParticles(prefersReduced ? 0 : (innerWidth < 480 ? 16 : 28)); }, { passive: true });
       }
     });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0.01 });
-  sections.forEach(s => spy.observe(s));
-
-  // Parallax (disabled on touch for smoother mobile)
-  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if(!isTouch){
-    const parallaxTargets = document.querySelectorAll('#home img');
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY * 0.05;
-      parallaxTargets.forEach(img => img.style.transform = `translateY(${y}px) scale(1.02)`);
-    }, {passive:true});
-  }
-
-  // Sparkle canvas (very light; auto-hidden on small screens by CSS)
-  const canvas = document.getElementById('sparkles');
-  const ctx = canvas.getContext('2d');
-  const R = window.devicePixelRatio || 1;
-  let w, h, particles = [];
-  function resize(){
-    w = canvas.width = innerWidth * R;
-    h = canvas.height = innerHeight * R;
-    canvas.style.width = innerWidth + 'px';
-    canvas.style.height = innerHeight + 'px';
-  }
-  function initParticles(count=28){
-    particles = Array.from({length:count}, ()=>({
-      x: Math.random()*w, y: Math.random()*h,
-      r: Math.random()*2*R + 0.6*R,
-      a: Math.random()*Math.PI*2,
-      s: (Math.random()*0.4 + 0.1)*R
-    }));
-  }
-  function tick(){
-    ctx.clearRect(0,0,w,h);
-    particles.forEach(p=>{
-      p.a += 0.01; p.x += Math.cos(p.a)*p.s; p.y += Math.sin(p.a)*p.s*0.6;
-      if(p.x<-10||p.x>w+10||p.y<-10||p.y>h+10){ p.x=Math.random()*w; p.y=Math.random()*h; }
-      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
-      g.addColorStop(0,'rgba(237,201,175,.35)'); g.addColorStop(1,'rgba(212,243,183,0)');
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2); ctx.fill();
-    });
-    requestAnimationFrame(tick);
-  }
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  resize(); initParticles(prefersReduced ? 0 : (innerWidth < 480 ? 16 : 28)); if(!prefersReduced) tick();
-  window.addEventListener('resize', ()=>{ resize(); initParticles(prefersReduced ? 0 : (innerWidth < 480 ? 16 : 28)); }, {passive:true});
-</script>
+  </script>
 </body>
-</html>
 
+</html>
