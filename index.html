@@ -335,13 +335,378 @@
       }
     }
 
-    /* Responsive Improvements */
+    /* ======================== MOBILE RESPONSIVE STYLES ======================== */
+
+    /* Large Mobile Devices (Tablets in portrait) */
+    @media (max-width: 1024px) {
+
+      /* Navigation adjustments */
+      .nav-enhanced .max-w-7xl {
+        padding: 0 1rem;
+      }
+
+      /* Hero section for tablets */
+      #home .grid.lg\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      /* Experience section grids */
+      #experience .grid.sm\\:grid-cols-2.lg\\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Petalscape section */
+      #petalscape .grid.lg\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      /* Contact section */
+      #contact .grid.grid-cols-1.lg\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    /* Medium Mobile Devices */
+    @media (max-width: 768px) {
+
+      /* Global padding reduction */
+      .max-w-7xl {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      /* Section padding */
+      section {
+        padding: 3rem 0 !important;
+      }
+
+      /* Typography adjustments */
+      .font-display.text-4xl,
+      .font-display.text-5xl,
+      .text-4xl,
+      .text-5xl {
+        font-size: 2.25rem !important;
+        line-height: 1.2 !important;
+      }
+
+      .font-display.text-6xl,
+      .font-display.text-7xl,
+      .text-6xl,
+      .text-7xl {
+        font-size: 2.75rem !important;
+        line-height: 1.1 !important;
+      }
+
+      .text-xl {
+        font-size: 1.125rem !important;
+      }
+
+      .text-lg {
+        font-size: 1rem !important;
+      }
+
+      /* Hero section fixes */
+      #home {
+        padding: 5rem 0 4rem 0 !important;
+        min-height: auto !important;
+      }
+
+      #home .space-y-6>*+* {
+        margin-top: 1.5rem !important;
+      }
+
+      #home .pt-4 {
+        padding-top: 1rem !important;
+      }
+
+      #home .pt-8 {
+        padding-top: 2rem !important;
+      }
+
+      /* Button adjustments */
+      #home .flex.flex-wrap.items-center.gap-4,
+      #petalscape .flex.flex-wrap.gap-4,
+      #contact .flex.flex-wrap.gap-4 {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 1rem !important;
+      }
+
+      .btn-brand,
+      .btn-outline-brand {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+
+      /* Grid layouts */
+      .grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+
+      .grid.sm\\:grid-cols-2.lg\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+      }
+
+      .grid.grid-cols-1.md\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+      }
+
+      .grid.grid-cols-1.md\\:grid-cols-5 {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Card adjustments */
+      .brand-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem;
+      }
+
+      /* Images adjustments */
+      #home .absolute.-bottom-8 {
+        position: static !important;
+        margin-top: 1rem !important;
+        width: 150px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* Section dividers */
+      .section-divider {
+        margin: 2rem 0 !important;
+      }
+
+      /* Footer adjustments */
+      footer .flex.flex-col.sm\\:flex-row {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 1rem !important;
+      }
+
+      footer .flex.items-center.gap-8 {
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+    }
+
+    /* Small Mobile Devices */
+    @media (max-width: 640px) {
+
+      /* Further typography reduction */
+      .font-display.text-3xl,
+      .text-3xl {
+        font-size: 1.75rem !important;
+      }
+
+      .font-display.text-2xl,
+      .text-2xl {
+        font-size: 1.5rem !important;
+      }
+
+      .text-base {
+        font-size: 0.875rem !important;
+      }
+
+      /* Navigation logo */
+      header img {
+        height: 2.5rem !important;
+      }
+
+      /* Hero specific */
+      #home h1 {
+        font-size: 2rem !important;
+      }
+
+      #home p {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+      }
+
+      /* Card padding reduction */
+      .brand-card {
+        padding: 1rem !important;
+      }
+
+      /* Form improvements */
+      #contact .grid.grid-cols-1.sm\\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+
+      #contact input,
+      #contact textarea {
+        font-size: 16px !important;
+        /* Prevent zoom on iOS */
+        padding: 1rem !important;
+      }
+
+      /* Contact info layout */
+      #contact .flex.items-center.gap-4,
+      #contact .flex.items-start.gap-4 {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.5rem !important;
+        padding: 1rem !important;
+      }
+
+      #contact .text-2xl {
+        margin-bottom: 0.5rem !important;
+        font-size: 1.5rem !important;
+      }
+
+      /* Instagram buttons */
+      #contact .flex.flex-wrap.gap-2 {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+
+      #contact .flex.flex-wrap.gap-2 a {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex !important;
+      }
+
+      /* Process section enhancements */
+      #experience .text-3xl.font-extrabold {
+        font-size: 1.5rem !important;
+      }
+
+      #experience .text-lg {
+        font-size: 0.95rem !important;
+      }
+
+      #experience .font-semibold.text-lg {
+        font-size: 1rem !important;
+      }
+
+      /* Petalscape section */
+      #petalscape .space-y-4 .flex {
+        padding: 0.75rem !important;
+      }
+
+      #petalscape .font-semibold.text-lg {
+        font-size: 1rem !important;
+      }
+    }
+
+    /* Extra Small Mobile Devices */
     @media (max-width: 480px) {
+
+      /* Disable performance-heavy elements */
       .sparkle-container {
-        display: none;
+        display: none !important;
+      }
+
+      .floating-element {
+        display: none !important;
+      }
+
+      /* Ultra-compact spacing */
+      .max-w-7xl {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
+
+      section {
+        padding: 2.5rem 0 !important;
+      }
+
+      /* Micro typography */
+      #home h1 {
+        font-size: 1.75rem !important;
+      }
+
+      .font-display.text-4xl,
+      .font-display.text-5xl,
+      .text-4xl,
+      .text-5xl {
+        font-size: 1.875rem !important;
+      }
+
+      /* Ultra-compact cards */
+      .brand-card {
+        padding: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+
+      /* Mobile nav improvements */
+      .mobile-nav-link {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.95rem !important;
+      }
+
+      /* Contact section ultra-compact */
+      #contact .p-8 {
+        padding: 1rem !important;
+      }
+
+      #contact input,
+      #contact textarea {
+        padding: 0.75rem !important;
+      }
+
+      /* Process section ultra-compact */
+      #experience .p-8 {
+        padding: 1rem !important;
+      }
+    }
+
+    /* Mobile Navigation Fixes */
+    @media (max-width: 1023px) {
+      #mobileNav.open {
+        max-height: none !important;
+      }
+
+      .mobile-nav-link {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      /* Ensure mobile nav works properly */
+      .lg\\:hidden {
+        display: block !important;
+      }
+
+      .hidden.lg\\:flex {
+        display: none !important;
+      }
+    }
+
+    /* Landscape Mobile Orientation */
+    @media (max-width: 896px) and (orientation: landscape) {
+      #home {
+        min-height: auto !important;
+        padding: 3rem 0 2rem 0 !important;
+      }
+
+      section {
+        padding: 2rem 0 !important;
+      }
+
+      /* Compact landscape layout */
+      #home .grid.lg\\:grid-cols-2 {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2rem !important;
+        align-items: center !important;
+      }
+    }
+
+    /* High DPI Mobile Displays */
+    @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+
+      /* Ensure crisp rendering on retina displays */
+      .brand-card {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
       }
     }
   </style>
+
 </head>
 
 <body class="font-sans text-ink bg-cream">
