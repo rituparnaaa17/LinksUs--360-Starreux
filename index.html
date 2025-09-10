@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>360 Starreux — Waves. Vows. Wows.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>360 Starreux - Luxury Wedding Planning | Mumbai, Alibag, Goa</title>
   <meta name="description"
-    content="360 Starreux crafts luxury & boho-inspired weddings across Mumbai, Alibag, Goa & beyond. Petalscape by 360: bespoke floral design & décor.">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
+    content="360 Starreux specializes in luxury and boho-inspired wedding planning across Mumbai, Alibag, and Goa. Complete wedding solutions with Petalscape floral design.">
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,44 +21,28 @@
             mint: '#D4F3B7',
             'mint-light': '#E8F8D8',
             'mint-dark': '#B8E485',
-            ink: '#0f172a',
-            coal: '#0b0b0b',
             cream: '#FDF9F5',
+            ink: '#2D3748'
           },
           fontFamily: {
-            display: ['Playfair Display', 'serif'],
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          boxShadow: {
-            glow: '0 10px 30px rgba(0,0,0,.15)',
-            'soft-lg': '0 24px 60px rgba(0,0,0,.12)',
-            'brand': '0 20px 40px rgba(237, 201, 175, 0.3)',
-            'mint-glow': '0 15px 35px rgba(212, 243, 183, 0.25)',
-          },
-          backgroundImage: {
-            'brand-gradient': 'linear-gradient(135deg, #EDC9AF 0%, #D4F3B7 100%)',
-            'brand-gradient-soft': 'linear-gradient(135deg, rgba(237, 201, 175, 0.1) 0%, rgba(212, 243, 183, 0.1) 100%)',
-            'hero-gradient': 'linear-gradient(135deg, #FDF9F5 0%, #F5E4D3 25%, #E8F8D8 75%, #FDF9F5 100%)',
-            'section-gradient': 'linear-gradient(180deg, rgba(237, 201, 175, 0.05) 0%, rgba(212, 243, 183, 0.05) 100%)',
-          },
-          keyframes: {
-            'float-soft': { '0%': { transform: 'translateY(0) rotate(0deg)' }, '100%': { transform: 'translateY(-12px) rotate(1deg)' } },
-            'spin-slow': { '0%': { transform: 'rotate(0)' }, '100%': { transform: 'rotate(360deg)' } },
-            'gradient-shift': { '0%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' }, '100%': { backgroundPosition: '0% 50%' } },
-            'pulse-brand': { '0%, 100%': { boxShadow: '0 0 0 0 rgba(237, 201, 175, 0.4)' }, '50%': { boxShadow: '0 0 0 20px rgba(237, 201, 175, 0)' } },
-            'slide-up': { '0%': { opacity: 0, transform: 'translateY(30px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+            'display': ['Playfair Display', 'serif'],
+            'sans': ['Inter', 'sans-serif']
           },
           animation: {
-            'float-soft': 'float-soft 8s ease-in-out infinite alternate',
-            'spin-slow': 'spin-slow 20s linear infinite',
-            'gradient-shift': 'gradient-shift 10s ease infinite',
-            'pulse-brand': 'pulse-brand 3s ease-in-out infinite',
-            'slide-up': 'slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'float-soft': 'float 6s ease-in-out infinite',
+            'gradient-shift': 'gradient 8s ease infinite'
           }
         }
       }
     }
   </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
@@ -72,10 +55,7 @@
       --cream: #FDF9F5;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* Removed all custom mobile CSS and replaced with Tailwind utilities */
     /* Enhanced Brand Gradients */
     .brand-gradient-bg {
       background: linear-gradient(135deg, var(--peach) 0%, var(--mint) 100%);
@@ -320,9 +300,19 @@
       overflow: hidden;
     }
 
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    @keyframes gradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
     /* Reduced Motion Support */
     @media (prefers-reduced-motion: reduce) {
-
       .sa,
       .sa.stagger>* {
         transition: none !important;
@@ -334,382 +324,10 @@
         animation: none !important;
       }
     }
-
-    /* ======================== MOBILE RESPONSIVE STYLES ======================== */
-
-    /* Large Mobile Devices (Tablets in portrait) */
-    @media (max-width: 1024px) {
-
-      /* Navigation adjustments */
-      .nav-enhanced .max-w-7xl {
-        padding: 0 1rem;
-      }
-
-      /* Hero section for tablets */
-      #home .grid.lg\\:grid-cols-2 {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      /* Experience section grids */
-      #experience .grid.sm\\:grid-cols-2.lg\\:grid-cols-3 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      /* Petalscape section */
-      #petalscape .grid.lg\\:grid-cols-2 {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      /* Contact section */
-      #contact .grid.grid-cols-1.lg\\:grid-cols-2 {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-    }
-
-    /* Medium Mobile Devices */
-    @media (max-width: 768px) {
-
-      /* Global padding reduction */
-      .max-w-7xl {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-      }
-
-      /* Section padding */
-      section {
-        padding: 3rem 0 !important;
-      }
-
-      /* Typography adjustments */
-      .font-display.text-4xl,
-      .font-display.text-5xl,
-      .text-4xl,
-      .text-5xl {
-        font-size: 2.25rem !important;
-        line-height: 1.2 !important;
-      }
-
-      .font-display.text-6xl,
-      .font-display.text-7xl,
-      .text-6xl,
-      .text-7xl {
-        font-size: 2.75rem !important;
-        line-height: 1.1 !important;
-      }
-
-      .text-xl {
-        font-size: 1.125rem !important;
-      }
-
-      .text-lg {
-        font-size: 1rem !important;
-      }
-
-      /* Hero section fixes */
-      #home {
-        padding: 5rem 0 4rem 0 !important;
-        min-height: auto !important;
-      }
-
-      #home .space-y-6>*+* {
-        margin-top: 1.5rem !important;
-      }
-
-      #home .pt-4 {
-        padding-top: 1rem !important;
-      }
-
-      #home .pt-8 {
-        padding-top: 2rem !important;
-      }
-
-      /* Button adjustments */
-      #home .flex.flex-wrap.items-center.gap-4,
-      #petalscape .flex.flex-wrap.gap-4,
-      #contact .flex.flex-wrap.gap-4 {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 1rem !important;
-      }
-
-      .btn-brand,
-      .btn-outline-brand {
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
-
-      /* Grid layouts */
-      .grid-cols-3 {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-      }
-
-      .grid.sm\\:grid-cols-2.lg\\:grid-cols-3 {
-        grid-template-columns: 1fr !important;
-      }
-
-      .grid.grid-cols-1.md\\:grid-cols-3 {
-        grid-template-columns: 1fr !important;
-      }
-
-      .grid.grid-cols-1.md\\:grid-cols-5 {
-        grid-template-columns: 1fr !important;
-      }
-
-      /* Card adjustments */
-      .brand-card {
-        padding: 1.5rem !important;
-        margin-bottom: 1rem;
-      }
-
-      /* Images adjustments */
-      #home .absolute.-bottom-8 {
-        position: static !important;
-        margin-top: 1rem !important;
-        width: 150px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-      }
-
-      /* Section dividers */
-      .section-divider {
-        margin: 2rem 0 !important;
-      }
-
-      /* Footer adjustments */
-      footer .flex.flex-col.sm\\:flex-row {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 1rem !important;
-      }
-
-      footer .flex.items-center.gap-8 {
-        flex-direction: column !important;
-        gap: 1rem !important;
-      }
-    }
-
-    /* Small Mobile Devices */
-    @media (max-width: 640px) {
-
-      /* Further typography reduction */
-      .font-display.text-3xl,
-      .text-3xl {
-        font-size: 1.75rem !important;
-      }
-
-      .font-display.text-2xl,
-      .text-2xl {
-        font-size: 1.5rem !important;
-      }
-
-      .text-base {
-        font-size: 0.875rem !important;
-      }
-
-      /* Navigation logo */
-      header img {
-        height: 2.5rem !important;
-      }
-
-      /* Hero specific */
-      #home h1 {
-        font-size: 2rem !important;
-      }
-
-      #home p {
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-      }
-
-      /* Card padding reduction */
-      .brand-card {
-        padding: 1rem !important;
-      }
-
-      /* Form improvements */
-      #contact .grid.grid-cols-1.sm\\:grid-cols-2 {
-        grid-template-columns: 1fr !important;
-      }
-
-      #contact input,
-      #contact textarea {
-        font-size: 16px !important;
-        /* Prevent zoom on iOS */
-        padding: 1rem !important;
-      }
-
-      /* Contact info layout */
-      #contact .flex.items-center.gap-4,
-      #contact .flex.items-start.gap-4 {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 0.5rem !important;
-        padding: 1rem !important;
-      }
-
-      #contact .text-2xl {
-        margin-bottom: 0.5rem !important;
-        font-size: 1.5rem !important;
-      }
-
-      /* Instagram buttons */
-      #contact .flex.flex-wrap.gap-2 {
-        flex-direction: column !important;
-        gap: 0.5rem !important;
-      }
-
-      #contact .flex.flex-wrap.gap-2 a {
-        width: 100% !important;
-        text-align: center !important;
-        justify-content: center !important;
-        display: flex !important;
-      }
-
-      /* Process section enhancements */
-      #experience .text-3xl.font-extrabold {
-        font-size: 1.5rem !important;
-      }
-
-      #experience .text-lg {
-        font-size: 0.95rem !important;
-      }
-
-      #experience .font-semibold.text-lg {
-        font-size: 1rem !important;
-      }
-
-      /* Petalscape section */
-      #petalscape .space-y-4 .flex {
-        padding: 0.75rem !important;
-      }
-
-      #petalscape .font-semibold.text-lg {
-        font-size: 1rem !important;
-      }
-    }
-
-    /* Extra Small Mobile Devices */
-    @media (max-width: 480px) {
-
-      /* Disable performance-heavy elements */
-      .sparkle-container {
-        display: none !important;
-      }
-
-      .floating-element {
-        display: none !important;
-      }
-
-      /* Ultra-compact spacing */
-      .max-w-7xl {
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
-      }
-
-      section {
-        padding: 2.5rem 0 !important;
-      }
-
-      /* Micro typography */
-      #home h1 {
-        font-size: 1.75rem !important;
-      }
-
-      .font-display.text-4xl,
-      .font-display.text-5xl,
-      .text-4xl,
-      .text-5xl {
-        font-size: 1.875rem !important;
-      }
-
-      /* Ultra-compact cards */
-      .brand-card {
-        padding: 0.75rem !important;
-        margin-bottom: 0.75rem !important;
-      }
-
-      /* Mobile nav improvements */
-      .mobile-nav-link {
-        padding: 0.75rem 1rem !important;
-        font-size: 0.95rem !important;
-      }
-
-      /* Contact section ultra-compact */
-      #contact .p-8 {
-        padding: 1rem !important;
-      }
-
-      #contact input,
-      #contact textarea {
-        padding: 0.75rem !important;
-      }
-
-      /* Process section ultra-compact */
-      #experience .p-8 {
-        padding: 1rem !important;
-      }
-    }
-
-    /* Mobile Navigation Fixes */
-    @media (max-width: 1023px) {
-      #mobileNav.open {
-        max-height: none !important;
-      }
-
-      .mobile-nav-link {
-        display: block !important;
-        width: 100% !important;
-      }
-
-      /* Ensure mobile nav works properly */
-      .lg\\:hidden {
-        display: block !important;
-      }
-
-      .hidden.lg\\:flex {
-        display: none !important;
-      }
-    }
-
-    /* Landscape Mobile Orientation */
-    @media (max-width: 896px) and (orientation: landscape) {
-      #home {
-        min-height: auto !important;
-        padding: 3rem 0 2rem 0 !important;
-      }
-
-      section {
-        padding: 2rem 0 !important;
-      }
-
-      /* Compact landscape layout */
-      #home .grid.lg\\:grid-cols-2 {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 2rem !important;
-        align-items: center !important;
-      }
-    }
-
-    /* High DPI Mobile Displays */
-    @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
-
-      /* Ensure crisp rendering on retina displays */
-      .brand-card {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-      }
-    }
   </style>
-
 </head>
 
-<body class="font-sans text-ink bg-cream">
+<body class="font-sans text-ink bg-cream overflow-x-hidden">
 
   <!-- Enhanced Progress Bar -->
   <div id="progress" class="fixed top-0 left-0 h-1 w-0 brand-gradient-bg z-[80] opacity-80"></div>
@@ -719,14 +337,14 @@
     <canvas id="sparkles"></canvas>
   </div>
 
-  <!-- Enhanced Navigation -->
+  <!-- Enhanced Navigation with Tailwind responsive classes -->
   <header id="nav" class="fixed top-0 left-0 right-0 z-[70] nav-enhanced transition-all duration-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div class="flex items-center justify-between h-16 lg:h-20">
         <!-- Logo -->
         <a href="#home" class="flex items-center gap-3 group">
           <img src="companylogo.png" alt="360 Starreux"
-            class="h-12 w-auto sm:h-12 md:h-14 lg:h-16 transition-all duration-300 group-hover:scale-110">
+            class="h-10 w-auto sm:h-12 md:h-14 lg:h-16 transition-all duration-300 group-hover:scale-110">
           <span class="sr-only">360 Starreux</span>
         </a>
 
@@ -765,22 +383,22 @@
       </div>
     </div>
 
-    <!-- Enhanced Mobile Navigation -->
+    <!-- Enhanced Mobile Navigation with better Tailwind responsive alignment -->
     <div id="mobileNav" class="lg:hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+      <div class="container mx-auto px-4 sm:px-6 py-6 max-w-7xl">
         <nav class="flex flex-col space-y-2">
           <a href="#home"
-            class="mobile-nav-link block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300">Home</a>
+            class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Home</a>
           <a href="#experience"
-            class="mobile-nav-link block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300">The
+            class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">The
             360° Experience</a>
           <a href="#petalscape"
-            class="mobile-nav-link block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300">Petalscape</a>
+            class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Petalscape</a>
           <a href="#love"
-            class="mobile-nav-link block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300">Echoes
+            class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Echoes
             of Love</a>
           <a href="#contact"
-            class="mobile-nav-link block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300">Contact</a>
+            class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Contact</a>
 
           <div class="pt-6 mt-4 border-t border-peach/20">
             <a href="#contact" class="block w-full text-center rounded-full btn-brand px-6 py-4 font-semibold">
@@ -792,68 +410,68 @@
     </div>
   </header>
 
-  <!-- Enhanced Hero Section -->
-  <section id="home" class="hero-enhanced min-h-screen flex items-center relative">
+  <!-- Enhanced Hero Section with proper Tailwind responsive classes and mobile alignment -->
+  <section id="home" class="hero-enhanced min-h-screen flex items-center relative pt-20 lg:pt-0">
     <!-- Floating Elements -->
-    <div class="floating-element w-20 h-20 bg-peach/20 top-1/4 left-1/4 animate-float-soft"></div>
-    <div class="floating-element w-16 h-16 bg-mint/20 top-1/3 right-1/4 animate-float-soft"
+    <div class="floating-element w-20 h-20 bg-peach/20 top-1/4 left-1/4 animate-float-soft hidden lg:block"></div>
+    <div class="floating-element w-16 h-16 bg-mint/20 top-1/3 right-1/4 animate-float-soft hidden lg:block"
       style="animation-delay: -3s;"></div>
-    <div class="floating-element w-12 h-12 bg-peach/30 bottom-1/4 left-1/3 animate-float-soft"
+    <div class="floating-element w-12 h-12 bg-peach/30 bottom-1/4 left-1/3 animate-float-soft hidden lg:block"
       style="animation-delay: -6s;"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="sa space-y-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10 max-w-7xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="sa space-y-4 sm:space-y-6 text-center lg:text-left">
           <span
             class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gradient text-ink text-sm font-medium tracking-wide uppercase shadow-brand">
             Crafting Waves of Love & Luxury
           </span>
 
-          <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl leading-tight">
+          <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
             <span class="brand-gradient-text block">Waves. Vows.</span>
             <span class="brand-gradient-text block">Wows.</span>
           </h1>
 
-          <p class="text-lg text-ink/80 max-w-2xl leading-relaxed">
+          <p class="text-base sm:text-lg text-ink/80 max-w-2xl leading-relaxed mx-auto lg:mx-0">
             At 360 Starreux, we don't just plan weddings – we craft unforgettable experiences.
             Specializing in luxury and boho-inspired celebrations across Mumbai, Alibag, Goa & beyond.
           </p>
 
-          <div class="flex flex-wrap items-center gap-4 pt-4">
-            <a href="#experience" class="btn-brand rounded-full px-8 py-4 font-semibold text-lg shadow-brand">
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#experience" class="btn-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg shadow-brand w-full sm:w-auto text-center">
               Explore the 360° Way
             </a>
-            <a href="#contact" class="btn-outline-brand rounded-full px-8 py-4 font-semibold text-lg">
+            <a href="#contact" class="btn-outline-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
               Start Your Story
             </a>
           </div>
 
-          <div class="grid grid-cols-3 gap-4 pt-8 sa stagger">
-            <div class="brand-card rounded-2xl p-6 text-center">
-              <div class="text-2xl font-extrabold brand-gradient-text">Luxury</div>
-              <div class="text-sm text-ink/70 mt-1">Coastal Destinations</div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 sm:pt-8 sa stagger max-w-2xl mx-auto lg:mx-0">
+            <div class="brand-card rounded-2xl p-4 sm:p-6 text-center">
+              <div class="text-xl sm:text-2xl font-extrabold brand-gradient-text">Luxury</div>
+              <div class="text-xs sm:text-sm text-ink/70 mt-1">Coastal Destinations</div>
             </div>
-            <div class="brand-card rounded-2xl p-6 text-center">
-              <div class="text-2xl font-extrabold brand-gradient-text">Boho</div>
-              <div class="text-sm text-ink/70 mt-1">Soulful Styling</div>
+            <div class="brand-card rounded-2xl p-4 sm:p-6 text-center">
+              <div class="text-xl sm:text-2xl font-extrabold brand-gradient-text">Boho</div>
+              <div class="text-xs sm:text-sm text-ink/70 mt-1">Soulful Styling</div>
             </div>
-            <div class="brand-card rounded-2xl p-6 text-center">
-              <div class="text-2xl font-extrabold brand-gradient-text">Curated</div>
-              <div class="text-sm text-ink/70 mt-1">End-to-End Care</div>
+            <div class="brand-card rounded-2xl p-4 sm:p-6 text-center">
+              <div class="text-xl sm:text-2xl font-extrabold brand-gradient-text">Curated</div>
+              <div class="text-xs sm:text-sm text-ink/70 mt-1">End-to-End Care</div>
             </div>
           </div>
         </div>
 
-        <div class="relative sa slide-right">
-          <div class="relative rounded-3xl overflow-hidden shadow-brand border-4 border-white/50 sa scale-in">
+        <div class="relative sa slide-right order-first lg:order-last">
+          <div class="relative rounded-3xl overflow-hidden shadow-brand border-4 border-white/50 sa scale-in max-w-md mx-auto lg:max-w-none">
             <img class="w-full h-full object-cover aspect-[4/3]" loading="lazy"
               src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop"
               alt="Coastal luxury wedding">
           </div>
 
-          <div class="absolute -bottom-8 left-8 sa">
+          <div class="absolute -bottom-4 sm:-bottom-8 left-4 sm:left-8 sa hidden sm:block">
             <div
-              class="rounded-2xl overflow-hidden border-4 border-white/80 shadow-mint-glow w-40 bg-white/20 backdrop-blur-sm">
+              class="rounded-2xl overflow-hidden border-4 border-white/80 shadow-mint-glow w-32 sm:w-40 bg-white/20 backdrop-blur-sm">
               <img class="w-full h-full object-cover aspect-[4/5]" loading="lazy"
                 src="https://images.unsplash.com/photo-1541535881962-3bb380b08458?q=80&w=1000&auto=format&fit=crop"
                 alt="Boho décor">
@@ -864,183 +482,178 @@
     </div>
   </section>
 
-  <div class="section-divider max-w-4xl mx-auto"></div>
+  <div class="section-divider container mx-auto max-w-4xl"></div>
 
-  <!-- Enhanced Experience Section -->
-  <section id="experience" class="py-20 bg-section-gradient relative overflow-hidden">
-    <div class="floating-element w-32 h-32 bg-mint/10 -top-16 -right-16 animate-spin-slow"></div>
+  <!-- Enhanced Experience Section with proper Tailwind responsive grid and alignment -->
+  <section id="experience" class="py-12 sm:py-16 lg:py-20 bg-section-gradient relative overflow-hidden">
+    <div class="floating-element w-32 h-32 bg-mint/10 -top-16 -right-16 animate-spin-slow hidden lg:block"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <header class="text-center mb-16 sa">
-        <h2 class="font-display text-4xl md:text-5xl brand-gradient-text mb-4">The 360° Experience</h2>
-        <p class="text-xl text-ink/70">Every wedding deserves a 360° touch of perfection.</p>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <header class="text-center mb-12 lg:mb-16 sa">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl brand-gradient-text mb-4">The 360° Experience</h2>
+        <p class="text-lg sm:text-xl text-ink/70">Every wedding deserves a 360° touch of perfection.</p>
       </header>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        <article class="brand-card rounded-3xl p-8 sa slide-left">
-          <h3 class="font-semibold text-xl mb-3 brand-gradient-text">Complete Wedding Planning</h3>
-          <p class="text-ink/70 leading-relaxed">End-to-end management with precision & creativity.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 lg:mb-16">
+        <article class="brand-card rounded-3xl p-6 sm:p-8 sa slide-left text-center">
+          <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Complete Wedding Planning</h3>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">End-to-end management with precision & creativity.</p>
         </article>
 
-        <article class="brand-card rounded-3xl p-8 sa">
-          <h3 class="font-semibold text-xl mb-3 brand-gradient-text">Venue Curation</h3>
-          <p class="text-ink/70 leading-relaxed">Handpicked destinations in Mumbai, Alibag & Goa.</p>
+        <article class="brand-card rounded-3xl p-6 sm:p-8 sa text-center">
+          <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Venue Curation</h3>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Handpicked destinations in Mumbai, Alibag & Goa.</p>
         </article>
 
-        <article class="brand-card rounded-3xl p-8 sa slide-right">
-          <h3 class="font-semibold text-xl mb-3 brand-gradient-text">Design & Styling</h3>
-          <p class="text-ink/70 leading-relaxed">Luxury meets boho elegance.</p>
+        <article class="brand-card rounded-3xl p-6 sm:p-8 sa slide-right text-center">
+          <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Design & Styling</h3>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Luxury meets boho elegance.</p>
         </article>
 
-        <article class="brand-card rounded-3xl p-8 sa slide-left">
-          <h3 class="font-semibold text-xl mb-3 brand-gradient-text">Décor & Floral Arrangements</h3>
-          <p class="text-ink/70 leading-relaxed">Aesthetic spaces crafted with flair.</p>
+        <article class="brand-card rounded-3xl p-6 sm:p-8 sa slide-left text-center">
+          <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Décor & Floral Arrangements</h3>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Aesthetic spaces crafted with flair.</p>
         </article>
 
-        <article class="brand-card rounded-3xl p-8 sa">
-          <h3 class="font-semibold text-xl mb-3 brand-gradient-text">Hospitality & Guest Management</h3>
-          <p class="text-ink/70 leading-relaxed">Seamless comfort for your loved ones.</p>
+        <article class="brand-card rounded-3xl p-6 sm:p-8 sa text-center">
+          <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Hospitality & Guest Management</h3>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Seamless comfort for your loved ones.</p>
         </article>
 
-        <article class="brand-card rounded-3xl p-8 sa slide-right">
-          <h3 class="font-semibold text-xl mb-3 brand-gradient-text">Entertainment & Experiences</h3>
-          <p class="text-ink/70 leading-relaxed">Curated performances & moments.</p>
+        <article class="brand-card rounded-3xl p-6 sm:p-8 sa slide-right text-center">
+          <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Entertainment & Experiences</h3>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Curated performances & moments.</p>
         </article>
 
-        <article class="brand-card rounded-3xl p-8 sm:col-span-2 lg:col-span-3 sa">
-          <h3 class="font-semibold text-xl mb-3 brand-gradient-text text-center">Luxury Catering & Bar Solutions</h3>
-          <p class="text-ink/70 leading-relaxed text-center">Fine dining experiences that delight every palate.</p>
+        <article class="brand-card rounded-3xl p-6 sm:p-8 sm:col-span-2 lg:col-span-3 sa text-center">
+          <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Luxury Catering & Bar Solutions</h3>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Fine dining experiences that delight every palate.</p>
         </article>
       </div>
 
       <!-- Enhanced Process -->
-      <div class="sa">
-        <h3 class="font-display text-3xl brand-gradient-text mb-4">Our Process</h3>
-        <p class="text-xl text-ink/70 mb-12">Crafting weddings with clarity, creativity & care.</p>
+      <div class="sa text-center lg:text-left">
+        <h3 class="font-display text-2xl sm:text-3xl brand-gradient-text mb-4">Our Process</h3>
+        <p class="text-lg sm:text-xl text-ink/70 mb-8 sm:mb-12">Crafting weddings with clarity, creativity & care.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 sa stagger">
-          <div class="brand-card rounded-3xl p-8 text-center">
-            <div class="text-3xl font-extrabold brand-gradient-text mb-3">01</div>
-            <div class="font-semibold text-lg mb-2">Consultation & Discovery</div>
-            <p class="text-ink/70">We listen to your story.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 sa stagger">
+          <div class="brand-card rounded-3xl p-6 sm:p-8 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold brand-gradient-text mb-3">01</div>
+            <div class="font-semibold text-base sm:text-lg mb-2">Consultation & Discovery</div>
+            <p class="text-ink/70 text-sm sm:text-base">We listen to your story.</p>
           </div>
 
-          <div class="brand-card rounded-3xl p-8 text-center">
-            <div class="text-3xl font-extrabold brand-gradient-text mb-3">02</div>
-            <div class="font-semibold text-lg mb-2">Concept & Design</div>
-            <p class="text-ink/70">Themes & décor that reflect you.</p>
+          <div class="brand-card rounded-3xl p-6 sm:p-8 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold brand-gradient-text mb-3">02</div>
+            <div class="font-semibold text-base sm:text-lg mb-2">Concept & Design</div>
+            <p class="text-ink/70 text-sm sm:text-base">Themes & décor that reflect you.</p>
           </div>
 
-          <div class="brand-card rounded-3xl p-8 text-center">
-            <div class="text-3xl font-extrabold brand-gradient-text mb-3">03</div>
-            <div class="font-semibold text-lg mb-2">Planning & Coordination</div>
-            <p class="text-ink/70">Vendors & schedules.</p>
+          <div class="brand-card rounded-3xl p-6 sm:p-8 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold brand-gradient-text mb-3">03</div>
+            <div class="font-semibold text-base sm:text-lg mb-2">Planning & Coordination</div>
+            <p class="text-ink/70 text-sm sm:text-base">Vendors & schedules.</p>
           </div>
 
-          <div class="brand-card rounded-3xl p-8 text-center">
-            <div class="text-3xl font-extrabold brand-gradient-text mb-3">04</div>
-            <div class="font-semibold text-lg mb-2">Execution with Precision</div>
-            <p class="text-ink/70">On-ground detailing.</p>
+          <div class="brand-card rounded-3xl p-6 sm:p-8 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold brand-gradient-text mb-3">04</div>
+            <div class="font-semibold text-base sm:text-lg mb-2">Execution with Precision</div>
+            <p class="text-ink/70 text-sm sm:text-base">On-ground detailing.</p>
           </div>
 
-          <div class="brand-card rounded-3xl p-8 text-center">
-            <div class="text-3xl font-extrabold brand-gradient-text mb-3">05</div>
-            <div class="font-semibold text-lg mb-2">The 360° Experience</div>
-            <p class="text-ink/70">Luxury meets love.</p>
+          <div class="brand-card rounded-3xl p-6 sm:p-8 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold brand-gradient-text mb-3">05</div>
+            <div class="font-semibold text-base sm:text-lg mb-2">The 360° Experience</div>
+            <p class="text-ink/70 text-sm sm:text-base">Luxury meets love.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider max-w-4xl mx-auto"></div>
+  <div class="section-divider container mx-auto max-w-4xl"></div>
 
-  <!-- Enhanced Petalscape Section -->
+  <!-- Enhanced Petalscape Section with proper mobile alignment -->
   <section id="petalscape"
-    class="py-20 bg-gradient-to-b from-cream via-mint-light/20 to-cream relative overflow-hidden">
-    <div class="floating-element w-24 h-24 bg-peach/15 top-1/4 right-1/4 animate-float-soft"></div>
+    class="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-cream via-mint-light/20 to-cream relative overflow-hidden">
+    <div class="floating-element w-24 h-24 bg-peach/15 top-1/4 right-1/4 animate-float-soft hidden lg:block"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <header class="text-center mb-16 sa">
-        <h2 class="font-display text-5xl md:text-6xl brand-gradient-text mb-4">Petalscape</h2>
-        <p class="text-xl text-ink/70">Floral Design & Décor by 360 Starreux</p>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <header class="text-center mb-12 lg:mb-16 sa">
+        <h2 class="font-display text-4xl sm:text-5xl md:text-6xl brand-gradient-text mb-4">Petalscape</h2>
+        <p class="text-lg sm:text-xl text-ink/70">Floral Design & Décor by 360 Starreux</p>
       </header>
 
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="sa slide-left space-y-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="sa slide-left space-y-6 sm:space-y-8 text-center lg:text-left">
           <div>
-            <h3 class="font-display text-3xl md:text-4xl brand-gradient-text mb-4">Petals. Passion. Perfection.</h3>
-            <p class="text-lg text-ink/70 mb-6">Where Every Bloom Tells Your Story</p>
-            <p class="text-lg text-ink/80 leading-relaxed">
+            <h3 class="font-display text-2xl sm:text-3xl md:text-4xl brand-gradient-text mb-4">Petals. Passion. Perfection.</h3>
+            <p class="text-base sm:text-lg text-ink/70 mb-4 sm:mb-6">Where Every Bloom Tells Your Story</p>
+            <p class="text-base sm:text-lg text-ink/80 leading-relaxed">
               Petalscape is the floral design and décor division of 360 Starreux. We specialize in transforming spaces
               with bespoke floral artistry.
             </p>
           </div>
 
           <div class="space-y-4 sa stagger">
-            <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
               <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
               <div>
-                <h4 class="font-semibold text-lg brand-gradient-text">Floral Designing</h4>
-                <p class="text-ink/70">Concepts that blend nature with style.</p>
+                <h4 class="font-semibold text-base sm:text-lg brand-gradient-text">Floral Designing</h4>
+                <p class="text-ink/70 text-sm sm:text-base">Concepts that blend nature with style.</p>
               </div>
             </div>
 
-            <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
               <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
               <div>
-                <h4 class="font-semibold text-lg brand-gradient-text">Floral Arrangements</h4>
-                <p class="text-ink/70">From intimate setups to grand installations.</p>
+                <h4 class="font-semibold text-base sm:text-lg brand-gradient-text">Floral Arrangements</h4>
+                <p class="text-ink/70 text-sm sm:text-base">From intimate setups to grand installations.</p>
               </div>
             </div>
 
-            <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
               <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
               <div>
-                <h4 class="font-semibold text-lg brand-gradient-text">Residential & Intimate Décor</h4>
-                <p class="text-ink/70">Celebrations at home, reimagined.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
-              <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
-              <div>
-                <h4 class="font-semibold text-lg brand-gradient-text">Wedding Aisles & Entryways</h4>
-                <p class="text-ink/70">Where magical journeys begin.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
-              <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
-              <div>
-                <h4 class="font-semibold text-lg brand-gradient-text">Floral Installations & Backdrops</h4>
-                <p class="text-ink/70">Picture-perfect elegance.</p>
+                <h4 class="font-semibold text-base sm:text-lg brand-gradient-text">Event Styling</h4>
+                <p class="text-ink/70 text-sm sm:text-base">Complete aesthetic transformation.</p>
               </div>
             </div>
           </div>
 
-          <div class="flex flex-wrap gap-4 pt-4 sa">
-            <a href="#contact" class="btn-brand rounded-full px-8 py-4 font-semibold text-lg">
-              Enquire Petalscape
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#contact" class="btn-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
+              Explore Petalscape
             </a>
-            <a href="#love" class="btn-outline-brand rounded-full px-8 py-4 font-semibold text-lg">
-              See Testimonials
+            <a href="#contact" class="btn-outline-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
+              Get Quote
             </a>
           </div>
         </div>
 
-        <div class="sa slide-right relative">
-          <div class="relative rounded-3xl overflow-hidden shadow-brand border-4 border-white/50">
-            <img src="petalscape.png" alt="Floral aisle and décor" class="w-full h-full object-cover aspect-[4/3]"
-              loading="lazy">
+        <div class="relative sa slide-right">
+          <div class="grid grid-cols-2 gap-4 max-w-md mx-auto lg:max-w-none">
+            <div class="space-y-4">
+              <img class="w-full rounded-2xl shadow-brand aspect-[3/4] object-cover" loading="lazy"
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format&fit=crop"
+                alt="Floral arrangement">
+              <img class="w-full rounded-2xl shadow-brand aspect-square object-cover" loading="lazy"
+                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop"
+                alt="Wedding décor">
+            </div>
+            <div class="space-y-4 pt-8">
+              <img class="w-full rounded-2xl shadow-brand aspect-square object-cover" loading="lazy"
+                src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=800&auto=format&fit=crop"
+                alt="Boho styling">
+              <img class="w-full rounded-2xl shadow-brand aspect-[3/4] object-cover" loading="lazy"
+                src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop"
+                alt="Luxury setup">
+            </div>
           </div>
-          <div class="floating-element w-28 h-28 bg-mint/20 -top-8 -right-8 animate-float-soft"></div>
         </div>
       </div>
     </div>
   </section>
-
-  <div class="section-divider max-w-4xl mx-auto"></div>
 
   <!-- Enhanced Testimonials Section -->
   <section id="love" class="py-20 bg-section-gradient relative">
@@ -1374,3 +987,5 @@
 </body>
 
 </html>
+
+
