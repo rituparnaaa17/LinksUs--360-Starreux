@@ -86,7 +86,7 @@
     }
 
     /* Scroll Animations Enhanced */
-    .sa {
+    /* .sa {
       opacity: 0;
       transform: translateY(20px);
       transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
@@ -95,9 +95,9 @@
     .sa.in {
       opacity: 1;
       transform: none;
-    }
+    } */
 
-    .sa.slide-left {
+    /* .sa.slide-left {
       transform: translateX(-40px);
     }
 
@@ -138,7 +138,7 @@
 
     .sa.stagger.in>*:nth-child(5) {
       transition-delay: 0.5s;
-    }
+    } */
 
     /* Enhanced Hero Background */
     .hero-enhanced {
@@ -302,17 +302,32 @@
 
     /* Animations */
     @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
     }
 
     @keyframes gradient {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     /* Reduced Motion Support */
     @media (prefers-reduced-motion: reduce) {
+
       .sa,
       .sa.stagger>* {
         transition: none !important;
@@ -438,10 +453,12 @@
           </p>
 
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-            <a href="#experience" class="btn-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg shadow-brand w-full sm:w-auto text-center">
+            <a href="#experience"
+              class="btn-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg shadow-brand w-full sm:w-auto text-center">
               Explore the 360° Way
             </a>
-            <a href="#contact" class="btn-outline-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
+            <a href="#contact"
+              class="btn-outline-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
               Start Your Story
             </a>
           </div>
@@ -463,21 +480,30 @@
         </div>
 
         <div class="relative sa slide-right order-first lg:order-last">
-          <div class="relative rounded-3xl overflow-hidden shadow-brand border-4 border-white/50 sa scale-in max-w-md mx-auto lg:max-w-none">
-            <img class="w-full h-full object-cover aspect-[4/3]" loading="lazy"
-              src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop"
-              alt="Coastal luxury wedding">
-          </div>
+  <!-- Main image -->
+  <div
+    class="relative rounded-3xl overflow-hidden shadow-brand border-4 border-white/50 sa scale-in max-w-md mx-auto lg:max-w-none">
+    <img
+      class="w-full object-cover aspect-[4/3] sm:aspect-[16/9]"
+      loading="lazy"
+      src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop"
+      alt="Coastal luxury wedding">
+  </div>
 
-          <div class="absolute -bottom-4 sm:-bottom-8 left-4 sm:left-8 sa hidden sm:block">
-            <div
-              class="rounded-2xl overflow-hidden border-4 border-white/80 shadow-mint-glow w-32 sm:w-40 bg-white/20 backdrop-blur-sm">
-              <img class="w-full h-full object-cover aspect-[4/5]" loading="lazy"
-                src="https://images.unsplash.com/photo-1541535881962-3bb380b08458?q=80&w=1000&auto=format&fit=crop"
-                alt="Boho décor">
-            </div>
-          </div>
-        </div>
+  <!-- Secondary image -->
+  <!-- <div class="mt-4 sm:mt-0 sm:absolute sm:-bottom-8 sm:left-8 sa">
+    <div
+      class="rounded-2xl overflow-hidden border-4 border-white/80 shadow-mint-glow w-32 sm:w-40 bg-white/20 backdrop-blur-sm mx-auto sm:mx-0">
+      <img
+        class="w-full object-cover aspect-[4/5]"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1541535881962-3bb380b08458?q=80&w=1000&auto=format&fit=crop"
+        alt="Boho décor">
+    </div>
+  </div> -->
+</div>
+
+
       </div>
     </div>
   </section>
@@ -497,12 +523,14 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 lg:mb-16">
         <article class="brand-card rounded-3xl p-6 sm:p-8 sa slide-left text-center">
           <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Complete Wedding Planning</h3>
-          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">End-to-end management with precision & creativity.</p>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">End-to-end management with precision & creativity.
+          </p>
         </article>
 
         <article class="brand-card rounded-3xl p-6 sm:p-8 sa text-center">
           <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Venue Curation</h3>
-          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Handpicked destinations in Mumbai, Alibag & Goa.</p>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Handpicked destinations in Mumbai, Alibag & Goa.
+          </p>
         </article>
 
         <article class="brand-card rounded-3xl p-6 sm:p-8 sa slide-right text-center">
@@ -527,7 +555,8 @@
 
         <article class="brand-card rounded-3xl p-6 sm:p-8 sm:col-span-2 lg:col-span-3 sa text-center">
           <h3 class="font-semibold text-lg sm:text-xl mb-3 brand-gradient-text">Luxury Catering & Bar Solutions</h3>
-          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Fine dining experiences that delight every palate.</p>
+          <p class="text-ink/70 leading-relaxed text-sm sm:text-base">Fine dining experiences that delight every palate.
+          </p>
         </article>
       </div>
 
@@ -587,7 +616,8 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div class="sa slide-left space-y-6 sm:space-y-8 text-center lg:text-left">
           <div>
-            <h3 class="font-display text-2xl sm:text-3xl md:text-4xl brand-gradient-text mb-4">Petals. Passion. Perfection.</h3>
+            <h3 class="font-display text-2xl sm:text-3xl md:text-4xl brand-gradient-text mb-4">Petals. Passion.
+              Perfection.</h3>
             <p class="text-base sm:text-lg text-ink/70 mb-4 sm:mb-6">Where Every Bloom Tells Your Story</p>
             <p class="text-base sm:text-lg text-ink/80 leading-relaxed">
               Petalscape is the floral design and décor division of 360 Starreux. We specialize in transforming spaces
@@ -596,7 +626,8 @@
           </div>
 
           <div class="space-y-4 sa stagger">
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
+            <div
+              class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
               <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
               <div>
                 <h4 class="font-semibold text-base sm:text-lg brand-gradient-text">Floral Designing</h4>
@@ -604,7 +635,8 @@
               </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
+            <div
+              class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
               <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
               <div>
                 <h4 class="font-semibold text-base sm:text-lg brand-gradient-text">Floral Arrangements</h4>
@@ -612,7 +644,8 @@
               </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
+            <div
+              class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors text-center sm:text-left">
               <div class="w-2 h-2 rounded-full bg-brand-gradient mt-3 flex-shrink-0"></div>
               <div>
                 <h4 class="font-semibold text-base sm:text-lg brand-gradient-text">Event Styling</h4>
@@ -622,10 +655,12 @@
           </div>
 
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-            <a href="#contact" class="btn-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
+            <a href="#contact"
+              class="btn-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
               Explore Petalscape
             </a>
-            <a href="#contact" class="btn-outline-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
+            <a href="#contact"
+              class="btn-outline-brand rounded-full px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
               Get Quote
             </a>
           </div>
@@ -987,5 +1022,3 @@
 </body>
 
 </html>
-
-
