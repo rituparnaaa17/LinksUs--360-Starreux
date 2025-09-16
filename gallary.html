@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - 360 Starreux | Luxury Wedding Planning</title>
+  <meta name="description"
+    content="Explore our stunning wedding gallery showcasing luxury and boho-inspired celebrations across Mumbai, Alibag, and Goa.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            peach: '#EDC9AF',
+            'peach-light': '#F5E4D3',
+            'peach-dark': '#D4A574',
+            mint: '#D4F3B7',
+            'mint-light': '#E8F8D8',
+            'mint-dark': '#B8E485',
+            cream: '#FDF9F5',
+            ink: '#2D3748'
+          },
+          fontFamily: {
+            'display': ['Playfair Display', 'serif'],
+            'sans': ['Inter', 'sans-serif']
+          },
+          animation: {
+            'float-soft': 'float 6s ease-in-out infinite',
+            'gradient-shift': 'gradient 8s ease infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --peach: #EDC9AF;
+      --peach-light: #F5E4D3;
+      --peach-dark: #D4A574;
+      --mint: #D4F3B7;
+      --mint-light: #E8F8D8;
+      --mint-dark: #B8E485;
+      --cream: #FDF9F5;
+      --ink: #2D3748;
+    }
+
+    /* Gallery specific styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .gallery-item {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .gallery-item.loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-item .image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      aspect-ratio: 4/5;
+      background: white;
+      box-shadow: 0 10px 25px -5px rgba(237, 201, 175, 0.2);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .gallery-item .image-container:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(237, 201, 175, 0.4);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(237, 201, 175, 0.9), rgba(212, 243, 183, 0.9));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .image-overlay {
+      opacity: 1;
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+    }
+
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: var(--peach);
+      transform: scale(1.1);
+    }
+
+    /* Enhanced Brand Gradients */
+    .brand-gradient-bg {
+      background: linear-gradient(135deg, var(--peach) 0%, var(--mint) 100%);
+      background-size: 200% 200%;
+      animation: gradient-shift 10s ease infinite;
+    }
+
+    .brand-gradient-text {
+      background: linear-gradient(135deg, var(--peach-dark) 0%, var(--mint-dark) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite;
+    }
+
+    .brand-card {
+      background: linear-gradient(135deg, rgba(253, 249, 245, 0.9) 0%, rgba(248, 248, 248, 0.8) 100%);
+      border: 1px solid rgba(237, 201, 175, 0.2);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .brand-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(237, 201, 175, 0.25);
+      border-color: rgba(237, 201, 175, 0.4);
+    }
+
+    .btn-brand {
+      background: linear-gradient(135deg, var(--peach) 0%, var(--mint) 100%);
+      color: var(--ink);
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-brand::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-brand:hover::before {
+      left: 100%;
+    }
+
+    .btn-brand:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(237, 201, 175, 0.4);
+    }
+
+    .btn-outline-brand {
+      border: 2px solid transparent;
+      background: linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, var(--peach), var(--mint)) border-box;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-brand:hover {
+      background: linear-gradient(135deg, var(--peach-light), var(--mint-light)) padding-box,
+        linear-gradient(135deg, var(--peach), var(--mint)) border-box;
+      transform: translateY(-2px);
+    }
+
+    /* Navigation Enhancements */
+    .nav-enhanced {
+      background: rgba(253, 249, 245, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(237, 201, 175, 0.2);
+    }
+
+    .nav-link-enhanced {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link-enhanced::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--peach), var(--mint));
+      transition: width 0.3s ease;
+    }
+
+    .nav-link-enhanced:hover::before,
+    .nav-link-enhanced.active::before {
+      width: 100%;
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+
+    @keyframes gradient {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .floating-element {
+      position: absolute;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(1px);
+      animation: float-soft 12s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(odd) {
+      animation-direction: reverse;
+      animation-duration: 15s;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-ink bg-cream overflow-x-hidden">
+
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 nav-enhanced">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="companylogo.png" alt="360 Starreux"
+            class="h-10 w-auto sm:h-12 md:h-14 lg:h-16 transition-all duration-300 group-hover:scale-110">
+          <span class="sr-only">360 Starreux</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8 xl:gap-10">
+          <a href="index.html"
+            class="nav-link-enhanced py-2 text-gray-700 hover:text-ink transition-colors duration-300">Home</a>
+          <a href="gallery.html"
+            class="nav-link-enhanced py-2 text-gray-700 hover:text-ink transition-colors duration-300 active">Gallery</a>
+          <a href="index.html#experience"
+            class="nav-link-enhanced py-2 text-gray-700 hover:text-ink transition-colors duration-300">The 360° Experience</a>
+          <a href="index.html#petalscape"
+            class="nav-link-enhanced py-2 text-gray-700 hover:text-ink transition-colors duration-300">Petalscape</a>
+          <a href="index.html#contact"
+            class="nav-link-enhanced py-2 text-gray-700 hover:text-ink transition-colors duration-300">Contact</a>
+        </nav>
+
+        <!-- CTA Button & Mobile Menu -->
+        <div class="flex items-center gap-4">
+          <a href="index.html#contact"
+            class="hidden sm:inline-flex items-center justify-center rounded-full btn-brand px-6 py-3 text-sm font-semibold">
+            Let's Create Magic
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button id="menuBtn"
+            class="lg:hidden relative w-12 h-12 rounded-xl bg-white/80 backdrop-blur-md border border-peach/20 shadow-lg hover:shadow-brand transition-all duration-300 flex flex-col items-center justify-center gap-1.5"
+            aria-label="Toggle menu">
+            <span class="hamburger-line w-5 h-0.5 bg-ink transition-all"></span>
+            <span class="hamburger-line w-5 h-0.5 bg-ink transition-all"></span>
+            <span class="hamburger-line w-5 h-0.5 bg-ink transition-all"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobileNav" class="lg:hidden max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-6 max-w-7xl">
+          <nav class="flex flex-col space-y-2">
+            <a href="index.html"
+              class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Home</a>
+            <a href="gallery.html"
+              class="block px-6 py-4 text-base font-medium text-peach-dark bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Gallery</a>
+            <a href="index.html#experience"
+              class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">The 360° Experience</a>
+            <a href="index.html#petalscape"
+              class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Petalscape</a>
+            <a href="index.html#contact"
+              class="block px-6 py-4 text-base font-medium text-gray-700 hover:text-ink hover:bg-peach-light/30 rounded-xl transition-all duration-300 text-center">Contact</a>
+
+            <div class="pt-6 mt-4 border-t border-peach/20">
+              <a href="index.html#contact" class="block w-full text-center rounded-full btn-brand px-6 py-4 font-semibold">
+                Let's Create Magic
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-24 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-peach-light via-cream to-mint-light"
+      style="background-size: 400% 400%; animation: gradient-shift 10s ease infinite;"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-element w-20 h-20 bg-peach/20 top-1/4 left-1/4 hidden lg:block"></div>
+    <div class="floating-element w-16 h-16 bg-mint/20 top-1/3 right-1/4 hidden lg:block" style="animation-delay: -3s;"></div>
+    <div class="floating-element w-12 h-12 bg-peach/30 bottom-1/4 left-1/3 hidden lg:block" style="animation-delay: -6s;"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-display text-5xl md:text-7xl font-bold text-ink mb-6">
+        Our <span class="brand-gradient-text">Gallery</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/80 max-w-3xl mx-auto">
+        Discover the magic we create through our lens. Each celebration tells a unique story of love, elegance, and unforgettable moments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ink mb-6">
+          Moments of <span class="brand-gradient-text">Perfection</span>
+        </h2>
+        <p class="text-lg text-ink/70 max-w-2xl mx-auto">
+          From intimate ceremonies to grand celebrations, explore the beautiful weddings we've had the privilege to plan and execute.
+        </p>
+      </div>
+
+      <!-- Gallery Grid - populated by JavaScript -->
+      <div id="galleryGrid" class="gallery-grid">
+        <!-- Gallery items will be inserted here by JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Get In Touch Section - Exact copy from original -->
+  <section id="contact"
+    class="py-20 bg-gradient-to-b from-peach-light/20 via-cream to-mint-light/20 relative overflow-hidden">
+    <div class="floating-element w-20 h-20 bg-mint/20 top-1/3 right-1/3 animate-float-soft"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl brand-gradient-text mb-4">Get In Touch</h2>
+        <p class="text-xl text-ink/70">Let's craft your story. Where love meets luxury.</p>
+      </header>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="brand-card rounded-3xl p-8">
+          <h3 class="font-semibold text-2xl brand-gradient-text mb-6">Contact Information</h3>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
+              <div class="text-2xl">📞</div>
+              <a class="text-lg hover:text-peach-dark transition-colors" href="tel:+919004261214">+91 90042 61214</a>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
+              <div class="text-2xl">📧</div>
+              <a class="text-lg hover:text-peach-dark transition-colors"
+                href="mailto:info@360starreux.in">info@360starreux.in</a>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
+              <div class="text-2xl">📍</div>
+              <div>
+                <p class="text-lg font-medium mb-1">Our Office:</p>
+                <p class="text-base text-ink/80 leading-relaxed">
+                  WeWork, Oberoi Commerz II<br>
+                  Oberoi Garden City<br>
+                  Western Express Highway<br>
+                  Goregaon East - 400063, Mumbai
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-peach-light/20 transition-colors">
+              <div class="text-2xl">📸</div>
+              <div>
+                <p class="text-lg mb-2">Follow us on Instagram:</p>
+                <div class="flex flex-wrap gap-2">
+                  <a class="bg-brand-gradient text-ink px-4 py-2 rounded-full text-sm font-medium hover:shadow-brand transition-all"
+                    href="https://instagram.com/_360.starreux_" target="_blank">@_360.starreux_</a>
+                  <a class="bg-brand-gradient text-ink px-4 py-2 rounded-full text-sm font-medium hover:shadow-brand transition-all"
+                    href="https://instagram.com/petal.scape_by360" target="_blank">@petal.scape_by360</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#" class="btn-brand rounded-full px-8 py-4 font-semibold text-lg">
+              Book a Consultation
+            </a>
+            <a href="https://wa.me/919004261214" target="_blank"
+              class="btn-outline-brand rounded-full px-8 py-4 font-semibold text-lg">
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <form class="brand-card rounded-3xl p-8 space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <input
+              class="w-full rounded-2xl border-2 border-peach/20 px-6 py-4 text-lg focus:border-peach focus:outline-none transition-colors bg-white/50"
+              placeholder="Your Name" required>
+            <input
+              class="w-full rounded-2xl border-2 border-peach/20 px-6 py-4 text-lg focus:border-peach focus:outline-none transition-colors bg-white/50"
+              placeholder="Phone / WhatsApp">
+          </div>
+
+          <input type="email"
+            class="w-full rounded-2xl border-2 border-peach/20 px-6 py-4 text-lg focus:border-peach focus:outline-none transition-colors bg-white/50"
+            placeholder="Email" required>
+
+          <input
+            class="w-full rounded-2xl border-2 border-peach/20 px-6 py-4 text-lg focus:border-peach focus:outline-none transition-colors bg-white/50"
+            placeholder="Preferred Location (e.g., Goa)">
+
+          <textarea rows="5"
+            class="w-full rounded-2xl border-2 border-peach/20 px-6 py-4 text-lg focus:border-peach focus:outline-none transition-colors bg-white/50 resize-none"
+            placeholder="Tell us about your celebration…"></textarea>
+
+          <button class="btn-brand w-full rounded-2xl px-8 py-4 font-semibold text-lg">
+            Send Enquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - Exact copy from original -->
+  <footer class="border-t border-peach/20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-ink/70">
+        <div class="text-center sm:text-left">
+          <p>© <span id="y"></span> 360 Starreux. All rights reserved.</p>
+        </div>
+        <div class="flex items-center gap-8">
+          <a href="https://www.talentronaut.in/" class="hover:text-peach-dark transition-colors">Designed by
+            Talentronaut Technologies</a>
+          <a href="#contact" class="hover:text-peach-dark transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Gallery Image">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current year in footer
+      const y = document.getElementById('y');
+      if (y) y.textContent = new Date().getFullYear();
+
+      // Mobile menu functionality
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      let navOpen = false;
+
+      const toggleMenu = () => {
+        navOpen = !navOpen;
+        if (navOpen) {
+          mobileNav.style.maxHeight = '600px';
+          mobileNav.style.opacity = '1';
+          menuBtn.classList.add('open');
+        } else {
+          mobileNav.style.maxHeight = '0';
+          mobileNav.style.opacity = '0';
+          menuBtn.classList.remove('open');
+        }
+      };
+
+      if (menuBtn && mobileNav) {
+        menuBtn.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking on links
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (navOpen) toggleMenu();
+          });
+        });
+      }
+
+      // Gallery images array - based on your file list
+      const galleryImages = [
+        { filename: '360 WEB 2.jpg', alt: 'Luxury Wedding Moment 1' },
+        { filename: '360 WEB 3.jpg', alt: 'Elegant Ceremony Setup 2' },
+        { filename: '360 WEB 4.jpg', alt: 'Boho Wedding Décor 3' },
+        { filename: '360 WEB 5.jpg', alt: 'Coastal Wedding Celebration 4' },
+        { filename: '360 WEB 6.jpg', alt: 'Floral Arrangement Petalscape 5' },
+        { filename: '360 WEB 7.jpg', alt: 'Wedding Reception Setup 6' },
+        { filename: '360 WEB 8.jpg', alt: 'Intimate Wedding Moments 7' },
+        { filename: '360 WEB 9.jpg', alt: 'Luxury Destination Wedding 8' },
+        { filename: '360 WEB 10.jpg', alt: 'Wedding Photography Session 9' },
+        { filename: '360 WEB 11.jpg', alt: 'Bridal Styling and Makeup 10' },
+        { filename: '360 WEB 12.jpg', alt: 'Wedding Ceremony Highlights 11' },
+        { filename: '360 WEB 13.jpg', alt: 'Reception Entertainment 12' },
+        { filename: '360 WEB 14.jpg', alt: 'Wedding Guest Moments 13' },
+        { filename: '360 WEB 15.jpg', alt: 'Couple Portrait Session 14' },
+        { filename: '360 WEB 16.jpg', alt: 'Wedding Venue Decoration 15' },
+        { filename: '360 WEB 17.jpg', alt: 'Celebration and Dancing 16' },
+        { filename: '360 WEB 18.jpg', alt: 'Wedding Day Memories 17' }
+      ];
+
+      // Function to create gallery item HTML
+      function createGalleryItem(image, index) {
+        return `
+          <div class="gallery-item" data-index="${index}">
+            <div class="image-container" onclick="openLightbox('./images/${image.filename}')">
+              <img src="./images/${image.filename}" 
+                   alt="${image.alt}" 
+                   loading="lazy"
+                   onload="this.parentElement.parentElement.classList.add('loaded')">
+              <div class="image-overlay">
+                <div class="text-white text-center">
+                  <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                  <p class="font-medium">View Image</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Populate gallery
+      const galleryGrid = document.getElementById('galleryGrid');
+      if (galleryGrid) {
+        galleryImages.forEach((image, index) => {
+          galleryGrid.innerHTML += createGalleryItem(image, index);
+        });
+
+        // Staggered animation for gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach((item, index) => {
+          // Staggered delay for loading animation
+          setTimeout(() => {
+            item.style.animationDelay = `${index * 0.1}s`;
+            item.classList.add('loaded');
+          }, index * 100);
+        });
+      }
+
+      // Lightbox functionality
+      window.openLightbox = function(imageSrc) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.src = imageSrc;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeLightbox = function() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      };
+
+      // Close lightbox with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          window.closeLightbox();
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
